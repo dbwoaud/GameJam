@@ -13,13 +13,9 @@ public class ResourceMapper : Editor
 
         var jsonData = JsonUtility.ToJson(wrapperData);
 
-        string savePath = Path.Combine(path,"MappingData.json"); //저장경로
+        string savePath = Path.Combine(path,"MappingData.txt"); //저장경로
 
         File.WriteAllText(savePath,jsonData);
-
-        Debug.Log("매핑데이터 생성 완료");
-        Debug.Log($"아이템 수 : {wrapperData.resourceDatas.Count}");
-        Debug.Log($"결과 : {jsonData}");
     }
 
     private static ResourceWrapperData GetWrapperData(string folderPath)
@@ -37,7 +33,12 @@ public class ResourceMapper : Editor
 
         foreach(var f in files)
         {
-            var fileName = Path.GetFileName(f);
+            if(Path.GetExtension(f) == ".meta")
+            {
+                continue;
+            }
+
+            var fileName = Path.GetFileNameWithoutExtension(f);
             var filePath = f.Replace(Application.dataPath,"Assets").Replace("\\","/");
 
             ResourceData data = new ResourceData(fileName,filePath);
