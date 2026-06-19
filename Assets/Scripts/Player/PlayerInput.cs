@@ -1,0 +1,157 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerInput : MonoBehaviour
+{
+    [Header("키 바인딩")]
+    [SerializeField] private KeyCode grabKey = KeyCode.Z;
+    [SerializeField] private KeyCode interactionKey = KeyCode.LeftControl;
+
+    [Header("잡기 설정")]
+    [SerializeField] private Transform holdPoint;
+    [SerializeField] private float grabRange = 1.2f;
+    [SerializeField] private float facingThreshold = 0.3f;
+    [SerializeField] private float dropForward = 1f;
+    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private LayerMask carryableLayer;
+
+    private Dictionary<InteractionInputAction, KeyCode> binds;
+    private Carryable heldItem;
+
+    public Carryable HeldItem => heldItem;
+    public bool IsHolding => heldItem != null;
+
+    public void Hold(Carryable item)
+    {
+        if (item == null) 
+            return;
+        heldItem = item;
+        item.PickUp(holdPoint);
+    }
+
+    public Carryable TakeFromHands()
+    {
+        Carryable item = heldItem;
+        heldItem = null;
+        return item;
+    }
+
+    public void DropToWorld()
+    {
+        if (heldItem == null) 
+            return;
+
+        heldItem.Drop(transform.position + transform.forward * dropForward);
+        heldItem = null;
+    }
+
+    void Awake()
+    {
+        binds = new Dictionary<InteractionInputAction, KeyCode>
+        {
+            { InteractionInputAction.Grab,     grabKey },
+            { InteractionInputAction.Interact, interactionKey },
+        };
+    }
+
+    private bool WasPressed(InteractionInputAction a) => Input.GetKeyDown(binds[a]);
+
+    void Update()
+    {
+        HandleActions();
+    }
+
+    private void HandleActions()
+    {
+        if (WasPressed(InteractionInputAction.Grab)) 
+            OnGrabPressed();
+        if (WasPressed(InteractionInputAction.Interact)) 
+            OnInteractionPressed();
+    }
+
+    private void OnGrabPressed()
+    {
+        IInteractable interactable = FindFrontInteractable();
+        if (interactable != null) 
+        { 
+            interactable.OnGrab(this); 
+            return; 
+        }
+
+
+        if (IsHolding) 
+            DropToWorld();
+
+        else
+        {
+            Carryable item = FindFrontCarryable();
+            if (item != null) 
+                Hold(item);
+        }
+    }
+
+    private void OnInteractionPressed()
+    {
+        IInteractable interactable = FindFrontInteractable();
+        if (interactable != null) 
+            interactable.OnInteract(this);
+    }
+
+    private IInteractable FindFrontInteractable()
+    {
+        Vector3 center = transform.position + transform.forward * 0.5f;
+        Collider[] hits = Physics.OverlapSphere(center, grabRange, interactableLayer);
+
+        IInteractable best = null;
+        float bestDot = facingThreshold;
+        foreach (var h in hits)
+        {
+            IInteractable s = h.GetComponentInParent<IInteractable>();
+            if (s == null) 
+                continue;
+
+            Vector3 dir = h.transform.position - transform.position;
+            dir.y = 0f;
+
+            if (dir.sqrMagnitude < 0.0001f) 
+                return s;
+
+            float dot = Vector3.Dot(transform.forward, dir.normalized);
+            if (dot > bestDot) 
+            { 
+                bestDot = dot; 
+                best = s; 
+            }
+        }
+        return best;
+    }
+
+    private Carryable FindFrontCarryable()
+    {
+        Vector3 center = transform.position + transform.forward * 0.5f;
+        Collider[] hits = Physics.OverlapSphere(center, grabRange, carryableLayer);
+
+        Carryable nearest = null;
+        float minDist = float.MaxValue;
+        foreach (var h in hits)
+        {
+            Carryable c = h.GetComponentInParent<Carryable>();
+            if (c == null || c.IsHeld) 
+                continue;
+
+            float d = (h.transform.position - center).sqrMagnitude;
+            if (d < minDist)
+            { 
+                minDist = d; 
+                nearest = c; 
+            }
+        }
+        return nearest;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position + transform.forward * 0.5f, grabRange);
+    }
+}
