@@ -1,5 +1,4 @@
 using DG.Tweening;
-using UnityEngine;
 
 public class EnteringState : GhostState
 {
@@ -12,6 +11,5 @@ public class EnteringState : GhostState
 
     public override void Exit()
     {
-        throw new System.NotImplementedException();
     }
 }

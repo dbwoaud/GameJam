@@ -2,13 +2,27 @@ using UnityEngine;
 
 public class WaitingForFoodState : GhostState
 {
+    const float patience = 60f;
+    float remainingPatience;
+
     public override void Enter()
     {
-        throw new System.NotImplementedException();
+        remainingPatience = patience;
+
+        _ghost.GetRandomFoodData();
+        _ghost.ShowFoodUI();
     }
 
     public override void Exit()
     {
-        throw new System.NotImplementedException();
+    }
+
+    public override void Update()
+    {
+        remainingPatience -= Time.deltaTime;
+        if (remainingPatience < 0) 
+        {
+            _ghost.StateMachine.ChangeState(new LeavingState());
+        }
     }
 }

@@ -6,7 +6,7 @@ public class GhostData
     public Vector3 tablePoint;
 
     //  일단 이동만 구현하고 필요한건 나중에.
-
+    public string orderingFood;
 
 
 

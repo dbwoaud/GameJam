@@ -5,22 +5,24 @@ public class GhostStateMachine
     Ghost _ghost;
     GhostMovement _movement;
     GhostData _data;
+    GhostUI _ui;
 
     GhostState currentState;
     public GhostState CurrentState => currentState;
 
 
-    public void Initialize(Ghost ghost, GhostData data, GhostMovement movement)
+    public void Initialize(Ghost ghost, GhostData data, GhostMovement movement, GhostUI ui)
     {
         _ghost = ghost;
         _data = data;
         _movement = movement;
+        _ui = ui;
     }
 
     public void SetInitialState(GhostState initialState)
     {
         currentState = initialState;
-        currentState.InitializeStateInfo(_ghost, _data, _movement);
+        currentState.InitializeStateInfo(_ghost, _data, _movement, _ui);
         currentState.Enter();
     }
 
@@ -31,7 +33,12 @@ public class GhostStateMachine
         currentState.Exit();
 
         currentState = stateToChange;
-        currentState.InitializeStateInfo(_ghost, _data, _movement);
+        currentState.InitializeStateInfo(_ghost, _data, _movement, _ui);
         currentState.Enter();
+    }
+
+    public void Update()
+    {
+        currentState?.Update();
     }
 }
