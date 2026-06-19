@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public class RecipeManager : Singleton<RecipeManager>
 {
     private bool isInit = false;
-    private List<CookDataSO> recipePool = new List<CookDataSO>();
+    private Dictionary<CookData,HashSet<int>> recipePool = new Dictionary<CookData, HashSet<int>>();
 
     public void Init()
     {
@@ -22,7 +22,9 @@ public class RecipeManager : Singleton<RecipeManager>
         foreach(var c in list)
         {
             Logger.Log($"레시피 이름 : {c.name}");
-            recipePool.Add(c);
+
+            HashSet<int> hashSet = new HashSet<int>(c.cookData.itemIndexs);
+            recipePool.Add(c.cookData,hashSet);
         }
 
         isInit = true;
@@ -30,22 +32,25 @@ public class RecipeManager : Singleton<RecipeManager>
         Logger.Log($"레시피 초기화 완료");
     }
 
-    public CookData GetRecipe(int itemIndex)
+    public CookData GetRecipe(List<int> itemIndexs)
     {
         CookData data = null;
 
         foreach(var r in recipePool)
         {
-            bool isContain = r.cookData.itemIndexs.Contains(itemIndex); //해당 음식에 매개변수의 아이템이 포함되는지 여부
+            var recipe = r.Key;
+            var hashSet = r.Value;
 
-            if(data == null && isContain)
+            if(hashSet.IsSupersetOf(itemIndexs))
             {
-                data = r.cookData;
-            }
-            else if(data != null && isContain)
-            {
-                data = null;
-                break;
+                if(data == null)
+                {
+                    data = recipe;
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 

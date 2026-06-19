@@ -45,7 +45,10 @@ public abstract class Carryable : MonoBehaviour
     public virtual void AttachTo(Transform socket)
     {
         IsHeld = false;
-        if (rb != null) rb.isKinematic = true;
+        if (rb != null) 
+            rb.isKinematic = true;
+        if (col != null)
+            col.enabled = false;
 
         transform.SetParent(socket);
         transform.localPosition = Vector3.zero;

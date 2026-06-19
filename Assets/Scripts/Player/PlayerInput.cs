@@ -79,8 +79,23 @@ public class PlayerInput : MonoBehaviour
         }
 
 
-        if (IsHolding) 
+        if (IsHolding)
+        {
+            Carryable front = FindFrontCarryable();
+            if (heldItem is CookingTool tool && tool.IsDone && front is Plate target)
+            {
+                if (tool.TryServeTo(target))
+                    return;
+            }
+            if (heldItem is Plate heldPlate && front is Plate other)
+            {
+                if (heldPlate.TryStack(other))
+                    return;
+            }
+
             DropToWorld();
+            return;
+        }
 
         else
         {
