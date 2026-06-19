@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe0d095641e5c2c4ca1637027976ac56, type: 3}
+  m_Name: Stage2DataSO
+  m_EditorClassIdentifier: Assembly-CSharp::StageDataSO
+  targetCookList:
+  - {fileID: 11400000, guid: 7441964a53978bb4294a65dca09c17e1, type: 2}
+  - {fileID: 11400000, guid: c1017956e866b1f4abff01fb7938ee0f, type: 2}
+  - {fileID: 11400000, guid: 2983b9d698381d941a6d1af91588b0a0, type: 2}
+  - {fileID: 11400000, guid: 4e9898dec49c58146a2a4c39f3fc3d56, type: 2}

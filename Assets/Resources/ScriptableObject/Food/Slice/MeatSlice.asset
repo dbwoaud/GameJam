@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fefcb051d2b1474ab9727a0fa6374cd, type: 3}
   m_Name: MeatSlice
   m_EditorClassIdentifier: Assembly-CSharp::CookDataSO
-  itemIndex: 0
+  itemIndex: 103
   cookData:
-    itemIndexs: 
-    cookingTime: 9
+    itemIndexs: 09000000
+    cookingTime: 0
     type: 1
     result: {fileID: 651354929322354794, guid: 2172ceb8afcc9aa47948e83817125a4c, type: 3}
