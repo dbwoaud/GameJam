@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fefcb051d2b1474ab9727a0fa6374cd, type: 3}
   m_Name: Pan-fried Dubu
   m_EditorClassIdentifier: Assembly-CSharp::CookDataSO
-  itemIndex: 4
+  itemIndex: -1
   cookData:
     itemIndexs: 64000000
     cookingTime: 0
