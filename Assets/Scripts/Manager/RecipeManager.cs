@@ -41,7 +41,7 @@ public class RecipeManager : Singleton<RecipeManager>
             var recipe = r.Key;
             var hashSet = r.Value;
 
-            if(hashSet.IsSupersetOf(itemIndexs))
+            if(hashSet.SetEquals(itemIndexs))
             {
                 if(data == null)
                 {
