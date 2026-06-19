@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2804266403461310484}
   - component: {fileID: 1072562868227504641}
   - component: {fileID: 533742701757840345}
-  - component: {fileID: 2305986316874195755}
+  - component: {fileID: 3161404526410774395}
   m_Layer: 7
-  m_Name: Food
+  m_Name: TestFood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2305986316874195755
+--- !u!114 &3161404526410774395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,6 +122,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2707383068076377961}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1690c34a05f2d8a41a4f90b807f828df, type: 3}
+  m_Script: {fileID: 11500000, guid: 953af4fdff76e0340a3572d08b68b57e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Food
+  m_EditorClassIdentifier: Assembly-CSharp::Ingredient

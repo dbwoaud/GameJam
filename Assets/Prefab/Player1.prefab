@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6200504503619314552}
   - component: {fileID: 8741127132605343937}
   - component: {fileID: 1874524474865225826}
+  - component: {fileID: 939047657097066462}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Untagged
@@ -189,13 +190,25 @@ MonoBehaviour:
   downKey: 115
   leftKey: 97
   rightKey: 100
-  grabKey: 122
-  interactionKey: 306
-  runKey: 304
   moveSpeed: 10
   runMultiplier: 2
   rotationSpeed: 15
   gravity: -9.8
+--- !u!114 &939047657097066462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4933975743743423076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7ac90afc94ba14692384d96b1f3c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+  grabKey: 122
+  interactionKey: 306
+  runKey: 304
   holdPoint: {fileID: 7268659664296966644}
   grabRange: 1.2
   foodLayer:
