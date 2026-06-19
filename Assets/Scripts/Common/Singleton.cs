@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    [SerializeField] private bool isDestroyable; //파괴 가능여부
+    [SerializeField] protected bool isDestroyable; //파괴 가능여부
 
     private static T m_instance;
 
