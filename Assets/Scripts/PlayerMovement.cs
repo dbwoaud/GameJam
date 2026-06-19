@@ -12,9 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private KeyCode downKey = KeyCode.S;
     [SerializeField] private KeyCode leftKey = KeyCode.A;
     [SerializeField] private KeyCode rightKey = KeyCode.D;
-    [SerializeField] private KeyCode grabKey = KeyCode.LeftShift;
+    [SerializeField] private KeyCode grabKey = KeyCode.Z;
     [SerializeField] private KeyCode interactionKey = KeyCode.LeftControl;
-    [SerializeField] private KeyCode runKey = KeyCode.LeftAlt;
+    [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
 
     [Header("이동 설정")]
     [SerializeField] private float moveSpeed = 10f;
@@ -22,9 +22,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 15f;
     [SerializeField] private float gravity = -9.8f;
 
+    [Header("잡기 설정")]
+    [SerializeField] private Transform holdPoint;
+    [SerializeField] private float grabRange = 1.2f;
+    [SerializeField] private LayerMask foodLayer;
+    [SerializeField] private float dropForward = 1f;
+
     private CharacterController controller;
     private float verticalVelocity;
     private Dictionary<InputAction, KeyCode> binds;
+    private Food heldFood;
 
     void Awake()
     {
@@ -77,11 +84,53 @@ public class PlayerMovement : MonoBehaviour
     {
         if (WasPressed(InputAction.Grab))
         {
-            Debug.Log("잡기 기능");
+            if (heldFood == null)
+                TryGrab();
+            else
+                DropFood();
         }
+
         if (WasPressed(InputAction.Interact))
         {
-            Debug.Log("상호작용 기능");
+            Debug.Log("썰기 or 굽기 or etc");
         }
+    }
+
+    private void TryGrab()
+    {
+        Vector3 center = transform.position + transform.forward * 0.5f;
+        Collider[] hits = Physics.OverlapSphere(center, grabRange, foodLayer);
+
+        Food nearest = null;
+        float minDist = float.MaxValue;
+        foreach (var h in hits)
+        {
+            Food f = h.GetComponent<Food>();
+            if (f == null || f.IsHeld) 
+                continue;
+
+            float d = (h.transform.position - center).sqrMagnitude;
+            if (d < minDist) { minDist = d; nearest = f; }
+        }
+
+        if (nearest != null)
+        {
+            heldFood = nearest;
+            heldFood.PickUp(holdPoint);
+        }
+    }
+
+    private void DropFood()
+    {
+        Vector3 dropPos = transform.position + transform.forward * dropForward;
+        heldFood.Drop(dropPos);
+        heldFood = null;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Vector3 center = transform.position + transform.forward * 0.5f;
+        Gizmos.DrawWireSphere(center, grabRange);
     }
 }

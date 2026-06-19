@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1595674810061974797}
   - component: {fileID: 339826109643546322}
   - component: {fileID: 7489380061105763977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,8 @@ Transform:
   m_LocalPosition: {x: 15.32, y: 1, z: 3.199}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2117946286154987436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7632620154622032618
@@ -157,9 +158,47 @@ MonoBehaviour:
   downKey: 274
   leftKey: 276
   rightKey: 275
-  grabKey: 303
-  interactionKey: 305
-  runKey: 307
+  grabKey: 46
+  interactionKey: 47
+  runKey: 38
   moveSpeed: 10
+  runMultiplier: 2
   rotationSpeed: 15
   gravity: -9.8
+  holdPoint: {fileID: 2117946286154987436}
+  grabRange: 1.2
+  foodLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  dropForward: 1
+--- !u!1 &7309199847650130297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2117946286154987436}
+  m_Layer: 6
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2117946286154987436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309199847650130297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3442393716371673405}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
