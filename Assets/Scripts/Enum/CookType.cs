@@ -4,9 +4,49 @@ public enum CookType
     None, //?щ즺 ?먮낯 ?곹깭
     Slice, //?곌린
     Boil, //李?
-    Fri,  //援ъ씠
+    Fry,  //援ъ씠
 }
 
-public enum IngredientType { Beef, Tofu, Radish, Onion, Egg } // 재료 종류
-public enum DishType { None, BeefRadishSoup } // 레시피 결과
-public enum CookState { Idle, Cooking, Done, Burnt } // 음식 상태
+// 재료 종류
+public enum IngredientType 
+{
+    Carrot,
+    Chicken,
+    Dubu,
+    Egg,
+    Fish,
+    Flour,
+    Gochujang,
+    Kimchi,
+    leek,
+    Meat,
+    Namul,
+    Radish,
+    Rice,
+    Seafood,
+    SesamiOil
+}
+
+// 레시피 결과
+public enum DishType 
+{ 
+    None,
+    BeefSoup,
+    BraisedFish,
+    GreenOnionPancake,
+    PanFriedBatteredFish,
+    PanFriedDubu,
+    PanFriedMeatPatties,
+    PanFriedSkewers,
+    RiceCake,
+    SoyBraisedBeef
+}
+
+// 음식 상태
+public enum CookState
+{ 
+    Idle, 
+    Cooking, 
+    Done, 
+    Burnt 
+} 

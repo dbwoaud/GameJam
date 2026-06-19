@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class CuttingBoard : MonoBehaviour, IInteractable
@@ -23,7 +24,14 @@ public class CuttingBoard : MonoBehaviour, IInteractable
 
     public void OnInteract(PlayerInput player)
     {
+        Debug.Log("인터렉트");
         if(onBoard != null) 
             onBoard.Chop();
+    }
+
+    [Button]
+    public void Test()
+    {
+        Debug.Log($"[CuttingBoard] {onBoard.name}");
     }
 }

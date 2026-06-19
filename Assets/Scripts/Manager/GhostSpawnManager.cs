@@ -22,7 +22,7 @@ public class GhostSpawnManager : MonoBehaviour
     [Button]
     public void SpawnGhost()
     {
-        Table assignedTable = TableManager.Instance.GetTable();
+        Table1 assignedTable = TableManager.Instance.GetTable();
         if (assignedTable == null)
         {
             Debug.Log("[GhostSpawnManager] 귀신 생성 요청중에 빈 테이블이 없어 소환할 수 없습니다.");

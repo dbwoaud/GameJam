@@ -25,7 +25,7 @@ public class Ghost : MonoBehaviour
         stateMachine.Update();
     }
 
-    public void SetTableInfo(Table table)
+    public void SetTableInfo(Table1 table)
     {
         data.table = table;
 

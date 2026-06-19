@@ -2,7 +2,7 @@ using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class Table : MonoBehaviour
+public class Table1 : MonoBehaviour
 {
     [SerializeField] Transform GhostWaitingPositionTransform;
     public Vector3 GhostWaitingPosition => GhostWaitingPositionTransform.position;

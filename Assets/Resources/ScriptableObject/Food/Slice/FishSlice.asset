@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CookDataSO
   itemIndex: 0
   cookData:
-    itemIndexs: 
-    cookingTime: 4
+    itemIndexs: 04000000
+    cookingTime: 0
     type: 1
     result: {fileID: 651354929322354794, guid: 8d703cf3c2015f14085dc732acac2c54, type: 3}

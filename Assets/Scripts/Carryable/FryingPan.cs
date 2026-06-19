@@ -2,5 +2,5 @@ using UnityEngine;
 
 public class FryingPan : CookingTool
 {
-    public override CookType Type => CookType.Fri;
+    public override CookType Type => CookType.Fry;
 }
