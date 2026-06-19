@@ -3,9 +3,9 @@ using UnityEngine;
 public class Ghost : MonoBehaviour
 {
     [SerializeField] GhostMovement movement;
+    [SerializeField] GhostUI ui;
     GhostStateMachine stateMachine;
     GhostData data;
-    GhostUI ui;
 
     public GhostStateMachine StateMachine => stateMachine;
 
@@ -20,9 +20,14 @@ public class Ghost : MonoBehaviour
     {
     }
 
-    public void SetInfo(Vector3 movePoint)
+    private void Update()
     {
-        data.tablePoint = movePoint;
+        stateMachine.Update();
+    }
+
+    public void SetTableInfo(Table table)
+    {
+        data.table = table;
 
         stateMachine.SetInitialState(new EnteringState());
     }
@@ -32,9 +37,21 @@ public class Ghost : MonoBehaviour
         data.orderingFood = TempFoodManager.Instance.GetRandomFood();
     }
 
+    #region CallUI ui 콜 경유가 많아지면 서로 참조하도록 하겠음.
+
     public void ShowFoodUI()
     {
         ui.ShowFood(data.orderingFood);
     }
 
+    public void ShowPatience(float fillAmount)
+    {
+        ui.ShowPatience(fillAmount);
+    }
+
+    public void ShowFace(bool isHappy)
+    {
+        ui.ShowFace(isHappy);
+    }
+    #endregion
 }

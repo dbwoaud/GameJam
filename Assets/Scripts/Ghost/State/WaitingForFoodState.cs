@@ -20,9 +20,13 @@ public class WaitingForFoodState : GhostState
     public override void Update()
     {
         remainingPatience -= Time.deltaTime;
+
+        float fillAmount = remainingPatience / patience;
+
+        _ghost.ShowPatience(fillAmount);
         if (remainingPatience < 0) 
         {
-            _ghost.StateMachine.ChangeState(new LeavingState());
+            _ghost.StateMachine.ChangeState(new LeavingState(isSuccess: false));
         }
     }
 }

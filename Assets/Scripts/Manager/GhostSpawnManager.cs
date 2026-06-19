@@ -31,12 +31,12 @@ public class GhostSpawnManager : MonoBehaviour
 
         Ghost ghost = Instantiate(ghostPrefab, GetRandomSpawnPosition(), Quaternion.identity);
 
-        ghost.SetInfo(assignedTable.GhostWaitingPosition);
+        ghost.SetTableInfo(assignedTable);
 
-        assignedTable.SetOccupied();
+        assignedTable.SetOccupied(ghost);
     }
 
-    private Vector3 GetRandomSpawnPosition()
+    public Vector3 GetRandomSpawnPosition()
     {
         int index = Random.Range(0, ghostSpawnPositions.Count);
 

@@ -23,6 +23,7 @@ public class TableManager : MonoBehaviour
         foreach (Table t in tables)
         {
             if (t.IsOccupied) continue;
+            if (!t.IsRightPosition) continue;
             availableTables.Add(t);
         }
 
