@@ -17,6 +17,12 @@ public class ResourceManager : Singleton<ResourceManager>
 
         var textAsset = Resources.Load<TextAsset>("MappingData");
 
+        if(textAsset == null)
+        {
+            Logger.LogError($"{GetType()} : 초기화 에러");
+            return;
+        }
+
         var mappingData = JsonUtility.FromJson<ResourceWrapperData>(textAsset.text);
 
         foreach(var asset in mappingData.resourceDatas)
@@ -30,6 +36,8 @@ public class ResourceManager : Singleton<ResourceManager>
         }
 
         isInit = true;
+
+        Logger.Log($"초기화 완료");
     }
 
     public T Load<T>(string assetName) where T : UnityEngine.Object
@@ -44,7 +52,7 @@ public class ResourceManager : Singleton<ResourceManager>
 
         if(asset == null)
         {
-            Debug.LogError("해당 에셋이 존재하지 않습니다");
+            Logger.LogError("해당 에셋이 존재하지 않습니다");
             return null;
         }
 
