@@ -12,7 +12,7 @@ public class Ingredient : Carryable
 
     private int chopCount;
 
-    public string IngredientName => IngredientName;
+    public string IngredientName => ingredientName;
     public bool IsChopped => chopCount >= chopStepsRequired;
     public float ChopProgress01 => Mathf.Clamp01((float)chopCount / chopStepsRequired);
 

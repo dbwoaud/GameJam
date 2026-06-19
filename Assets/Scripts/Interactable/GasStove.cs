@@ -5,6 +5,8 @@ public class GasStove : MonoBehaviour, IInteractable
     [SerializeField] private Transform socket;
     private CookingTool onStove;
 
+
+
     void Update()
     {
         if (onStove != null) 
