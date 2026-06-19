@@ -3,10 +3,20 @@ using UnityEngine;
 
 public class ResourceManager : Singleton<ResourceManager>
 {
-    private bool isInit = false;
+    public bool isInit {get; private set;} = false;
 
     private Dictionary<string,string> assetBinding = new Dictionary<string, string>();
     private Dictionary<string,UnityEngine.Object> assetPool = new Dictionary<string, UnityEngine.Object>();
+
+#if UNITY_EDITOR
+
+    [ContextMenu("TestInit")]
+    public void InitTest()
+    {
+        Init();
+    }
+
+#endif
 
     public void Init()
     {
@@ -38,6 +48,8 @@ public class ResourceManager : Singleton<ResourceManager>
         isInit = true;
 
         Logger.Log($"초기화 완료");
+
+        RecipeManager.Instance.Init();
     }
 
     public T Load<T>(string assetName) where T : UnityEngine.Object
@@ -58,5 +70,24 @@ public class ResourceManager : Singleton<ResourceManager>
 
         assetPool[assetName] = asset;
         return asset;
+    }
+
+    public List<T> LoadAll<T> (string path) where T : UnityEngine.Object
+    {
+        List<T> list = new List<T>();
+
+        var assetArr = Resources.LoadAll<T>(path);
+
+        foreach(var asset in assetArr)
+        {
+            if(assetBinding.ContainsKey(asset.name) && assetPool.ContainsKey(asset.name) == false)
+            {
+                assetPool[asset.name] = asset;
+            }
+
+            list.Add(asset);
+        }
+
+        return list;
     }
 }
