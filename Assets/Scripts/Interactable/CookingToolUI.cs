@@ -25,4 +25,9 @@ public class CookingToolUI : MonoBehaviour
     {
         patienceBar.color = Color.red;
     }
+
+    private void Update()
+    {
+        transform.rotation = mainCamera.transform.rotation;
+    }
 }

@@ -69,6 +69,7 @@ public abstract class Carryable : MonoBehaviour
 
             //  집었을 때 요리 소리 중단
             c.StopCookingSound();
+            c.UIOff();
         }
 
         if (gameObject.TryGetComponent(out Ingredient i))
