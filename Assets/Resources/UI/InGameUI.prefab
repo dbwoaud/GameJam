@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 973fd87416d01ca4f999d325c269a4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InGameUI
+  isStackable: 0
   targetText: {fileID: 2504543734279451038}
   timerText: {fileID: 8969888632696323795}
   recipeTR: {fileID: 1777718411402686703}

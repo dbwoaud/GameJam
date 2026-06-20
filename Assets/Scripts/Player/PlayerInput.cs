@@ -48,7 +48,7 @@ public class PlayerInput : MonoBehaviour
         if (heldItem == null) 
             return;
 
-        heldItem.Drop(transform.position + transform.forward * dropForward);
+        heldItem.Drop(transform.position - transform.forward * dropForward);
         heldItem = null;
 
         animator.SetBool("Grap", false);
@@ -130,7 +130,7 @@ public class PlayerInput : MonoBehaviour
 
     private IInteractable FindFrontInteractable()
     {
-        Vector3 center = transform.position + transform.forward * 0.5f;
+        Vector3 center = transform.position - transform.forward * 0.5f;
         Collider[] hits = Physics.OverlapSphere(center, grabRange, interactableLayer);
 
         IInteractable best = null;
@@ -147,7 +147,7 @@ public class PlayerInput : MonoBehaviour
             if (dir.sqrMagnitude < 0.0001f) 
                 return s;
 
-            float dot = Vector3.Dot(transform.forward, dir.normalized);
+            float dot = Vector3.Dot(-transform.forward, dir.normalized);
             if (dot > bestDot) 
             { 
                 bestDot = dot; 
@@ -159,7 +159,7 @@ public class PlayerInput : MonoBehaviour
 
     private Carryable FindFrontCarryable()
     {
-        Vector3 center = transform.position + transform.forward * 0.5f;
+        Vector3 center = transform.position - transform.forward * 0.5f;
         Collider[] hits = Physics.OverlapSphere(center, grabRange, carryableLayer);
 
         Carryable nearest = null;
@@ -194,6 +194,6 @@ public class PlayerInput : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position + transform.forward * 0.5f, grabRange);
+        Gizmos.DrawWireSphere(transform.position - transform.forward * 0.5f, grabRange);
     }
 }
