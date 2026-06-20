@@ -114,6 +114,7 @@ MonoBehaviour:
   carryableLayer:
     serializedVersion: 2
     m_Bits: 128
+  animator: {fileID: 1564546189871078114}
 --- !u!136 &3308325605807537700
 CapsuleCollider:
   m_ObjectHideFlags: 0

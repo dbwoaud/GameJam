@@ -60,6 +60,8 @@ public class Sink : MonoBehaviour, IInteractable
 
 
         SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("DishWash"));
+        player.TriggerWash();
+
         washCount++;
         // UI 프로그래스바 업데이트
 
