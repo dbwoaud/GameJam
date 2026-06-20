@@ -5,7 +5,8 @@ public class StageManager : Singleton<StageManager>
 {
     [field:SerializeField] public StageDataSO stageData { get; private set;}
 
-    private int targetCount = 0; //성불 수
+    private int targetCount = 0; //성불 수, 성공 수
+    private int failCount = 0;
     private float playTime = 0f; //스테이지 플레이 시간
 
     public Action<int,int> OnUpdateCount;
@@ -30,6 +31,14 @@ public class StageManager : Singleton<StageManager>
         {
             playTime += TimeManager.Instance.deltaTime;
             OnTimer.Invoke(playTime,stageData.limitTime);
+
+            if(playTime >= stageData.limitTime)
+            {
+                var ui = UIManager.Instance.Show<GameResultUI>();
+                ui.Show(targetCount,failCount);
+                
+                TimeManager.Instance.SetTimeScale(0f);
+            }
         }
     }
 
@@ -37,5 +46,10 @@ public class StageManager : Singleton<StageManager>
     {
         targetCount += 1;
         OnUpdateCount?.Invoke(targetCount,stageData.targetCount);
+    }
+
+    public void CountingFail()
+    {
+        failCount += 1;
     }
 }

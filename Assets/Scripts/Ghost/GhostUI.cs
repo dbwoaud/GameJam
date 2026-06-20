@@ -6,6 +6,7 @@ public class GhostUI : MonoBehaviour
 {
     Camera mainCamera;
     [SerializeField] TextMeshProUGUI foodString;
+    [SerializeField] private Image foodImg;
     [SerializeField] Image patienceBar;
     [SerializeField] Image face;
     [SerializeField] GameObject waitingPanel;
@@ -16,15 +17,19 @@ public class GhostUI : MonoBehaviour
 
     private void Start()
     {
+        foodImg.gameObject.SetActive(false);
         mainCamera = Camera.main;
         transform.rotation = mainCamera.transform.rotation;
     }
 
-    public void ShowFood(string foodName)
+    public void ShowFood(CookDataSO dataSO)
     {
+        foodImg.gameObject.SetActive(true);
         waitingPanel.SetActive(true);
         leavingPanel.SetActive(false);
-        foodString.text = foodName;
+        // foodString.text = foodName;
+        foodImg.sprite = dataSO.cookSprite;
+        transform.rotation = mainCamera.transform.rotation;
     }
 
     public void ShowPatience(float fillAmount)
@@ -36,6 +41,7 @@ public class GhostUI : MonoBehaviour
     {
         waitingPanel.SetActive(false);
         leavingPanel.SetActive(true);
+        foodImg.gameObject.SetActive(false);
 
         if (isHappy) face.sprite = happyFace;
         else face.sprite = angryFace;

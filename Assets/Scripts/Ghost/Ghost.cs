@@ -55,7 +55,7 @@ public class Ghost : MonoBehaviour
 
     public void ShowFoodUI()
     {
-        ui.ShowFood(data.orderFoodSO.name);
+        ui.ShowFood(data.orderFoodSO);
     }
 
     public void ShowPatience(float fillAmount)
