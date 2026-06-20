@@ -45,8 +45,12 @@ public class CuttingBoard : MonoBehaviour, IInteractable
 
     public void OnInteract(PlayerInput player)
     {
+        if (onBoard == null) return;
+
+        //  이미 썰린 재료가 됐을 때 썰 수 없는 것일 가능성 높아서 return
+        if (!slicableIngredientIndexes.Contains(onBoard.IngredientIndex)) return;
+
         Debug.Log("인터렉트");
-        if(onBoard != null) 
             onBoard.Chop();
     }
 

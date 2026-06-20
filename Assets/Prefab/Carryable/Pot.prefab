@@ -572,15 +572,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0a7dbaea84efcba4b9edf2264cbdba10, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.66587
+      value: -1.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a7dbaea84efcba4b9edf2264cbdba10, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a7dbaea84efcba4b9edf2264cbdba10, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.14536
+      value: -6.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a7dbaea84efcba4b9edf2264cbdba10, type: 3}
       propertyPath: m_LocalRotation.w
@@ -677,6 +677,7 @@ MonoBehaviour:
   stackHeight: 0.2
   doneTime: 1
   burnTime: 15
+  burntFood: {fileID: 651354929322354794, guid: 59b0c37b233f67b419283e008bff4a27, type: 3}
   ui: {fileID: 3651859082769042631}
 --- !u!4 &5520837348523349201 stripped
 Transform:

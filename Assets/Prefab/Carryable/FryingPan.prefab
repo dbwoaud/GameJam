@@ -129,8 +129,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FryingPan
   contentsRoot: {fileID: 8519564158730170918}
   stackHeight: 0.2
-  doneTime: 10
+  doneTime: 1
   burnTime: 15
+  burntFood: {fileID: 651354929322354794, guid: 59b0c37b233f67b419283e008bff4a27, type: 3}
   ui: {fileID: 948310132820035569}
 --- !u!1 &1292254328226046675
 GameObject:

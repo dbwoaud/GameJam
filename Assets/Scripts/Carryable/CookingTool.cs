@@ -15,6 +15,7 @@ public abstract class CookingTool : Carryable
     [SerializeField] private float burnTime = 15f;
 
     [Header("·¡ÆÛ·±½º")]
+    [SerializeField] GameObject burntFood;
     [SerializeField] CookingToolUI ui;
 
     private readonly Stack<Ingredient> contents = new Stack<Ingredient>();
@@ -142,7 +143,7 @@ public abstract class CookingTool : Carryable
         State = CookState.Burnt;
         // Åº À½½Ä Ç¥½Ã
         Destroy(resultObject);
-        //resultObject = Instantiate(Åº ¿ÀºêÁ§Æ®);
+        resultObject = Instantiate(burntFood, contentsRoot);
 
         //  ÅÀÀ¸¸é ¹Ù ¾ø¾Ú.
         ui.gameObject.SetActive(false);
@@ -177,6 +178,7 @@ public abstract class CookingTool : Carryable
     private void ResetCookware()
     {
         State = CookState.Idle;
+        Destroy(resultObject);
         resultObject = null;
         recipe = null;
         timer = 0f;
