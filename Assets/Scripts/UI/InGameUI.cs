@@ -16,10 +16,14 @@ public class InGameUI : BaseUI
     {
         float remainTime = limitTime - playTime;
 
-        string minute = (remainTime / 60f).ToString("N2");
-        string second = (remainTime % 60f).ToString("N2");
+        Logger.Log($"제한시간 {limitTime}");
+        Logger.Log($"플레이타임 {playTime}");
+        Logger.Log($"남은시간 {remainTime}");
 
-        this.timerText.text = $"{minute:second}";
+        string minute = (remainTime / 60f).ToString("00");
+        string second = (remainTime % 60f).ToString("00");
+
+        this.timerText.text = $"{minute}:{second}";
     }    
 
     public void SetTargetText(int count,int target)

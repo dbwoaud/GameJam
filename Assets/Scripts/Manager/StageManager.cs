@@ -18,16 +18,17 @@ public class StageManager : Singleton<StageManager>
         base.Awake();
     }
 
-    public void SetStageData(StageDataSO stageData)
+    public void SetStage(StageDataSO stageData)
     {
         this.stageData = stageData;
+        UIManager.Instance.Show<InGameUI>();
     }
 
     void Update()
     {
-        if(Time.timeScale >= 0f)
+        if(TimeManager.Instance.timeScale >= 0f)
         {
-            playTime += Time.deltaTime;
+            playTime += TimeManager.Instance.deltaTime;
             OnTimer.Invoke(playTime,stageData.limitTime);
         }
     }

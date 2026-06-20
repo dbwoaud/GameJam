@@ -49,6 +49,8 @@ public class ResourceManager : Singleton<ResourceManager>
 
     public T Load<T>(string assetName) where T : UnityEngine.Object
     {
+        assetName = assetName.ToLower();
+
         if(assetPool.ContainsKey(assetName))
         {
             return (T)assetPool[assetName];
