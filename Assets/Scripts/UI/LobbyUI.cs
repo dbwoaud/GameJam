@@ -6,6 +6,9 @@ public class LobbyUI : BaseUI
     void Start()
     {
         UIManager.Instance.Show<ControlInfoUI>();
+
+        var clip = ResourceManager.Instance.Load<AudioClip>("2 - Mellow beginnings");
+        SoundManager.Instance.ChangeBGM(clip);
     }
 
     public void OnClickSetting()

@@ -1,13 +1,14 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector.Editor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "StageDataSO", menuName = "GamePlay/StageDataSO", order = 0)]
 public class StageDataSO : ScriptableObject
 {
     [SerializeField] private List<CookDataSO> targetCookList;
+    [SerializeField] private AudioClip clip;
     [field:SerializeField] public int targetCount {get; private set;} //성불시킬 혼 숫자
     [field:SerializeField] public float  limitTime {get; private set;} //시간제한
-
     [field:SerializeField] public SequenceDataSO sequenceData {get; private set;}
 
     public List<CookDataSO> GetCookList()
@@ -19,5 +20,10 @@ public class StageDataSO : ScriptableObject
     {
         int index = Random.Range(0, targetCookList.Count);
         return targetCookList[index];
+    }
+
+    public void ChangeBGM()
+    {
+        SoundManager.Instance.ChangeBGM(clip);
     }
 }

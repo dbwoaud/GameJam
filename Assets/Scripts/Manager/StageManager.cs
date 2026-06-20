@@ -23,6 +23,7 @@ public class StageManager : Singleton<StageManager>
     {
         this.stageData = stageData;
         UIManager.Instance.Show<InGameUI>();
+        stageData.ChangeBGM();
     }
 
     void Update()
