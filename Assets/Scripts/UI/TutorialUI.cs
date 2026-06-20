@@ -3,7 +3,7 @@ public class TutorialUI : BaseUI
     public override void Show()
     {
         base.Show();
-        TimeManager.Instance.SetTimeScale(1);
+        TimeManager.Instance.SetTimeScale(0);
     }
 
     public override void Hide()

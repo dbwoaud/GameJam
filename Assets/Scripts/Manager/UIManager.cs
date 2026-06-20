@@ -66,7 +66,10 @@ public class UIManager : Singleton<UIManager>
         var result = uiDict[typeof(T)] as T;
         result.gameObject.SetActive(true);
 
-        uiStack.Push(result);
+        if(result.isStackable)
+        {
+            uiStack.Push(result);
+        }
 
         return result;
     }

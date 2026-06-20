@@ -28,7 +28,7 @@ public class LeavingState : GhostState
         }
 
         _data.table.FreeTable();
-
+        _ghost.DestroyMyOrder();
     }
 
     public override void Exit()

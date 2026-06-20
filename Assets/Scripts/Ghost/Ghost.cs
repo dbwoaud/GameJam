@@ -12,6 +12,8 @@ public class Ghost : MonoBehaviour
 
     [SerializeField] CookDataSO temp;
 
+    private RecipeInfoUI myOrder;
+
     private void Awake()
     {
         stateMachine = new GhostStateMachine();
@@ -39,9 +41,17 @@ public class Ghost : MonoBehaviour
     {
         //data.orderFoodSO = StageManager.Instance.stageData.GetRandomFood();
         data.orderFoodSO = temp;
+
+        var ui = UIManager.Instance.Show<InGameUI>();
+        myOrder = ui.AddOrder(data.orderFoodSO);
     }
 
-    #region CallUI ui ÄÝ °æÀ¯°¡ ¸¹¾ÆÁö¸é ¼­·Î ÂüÁ¶ÇÏµµ·Ï ÇÏ°ÚÀ½.
+    public void DestroyMyOrder()
+    {
+        Destroy(myOrder);
+    }
+
+    #region CallUI ui ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ï°ï¿½ï¿½ï¿½.
 
     public void ShowFoodUI()
     {

@@ -19,3 +19,6 @@ MonoBehaviour:
     cookingTime: 0
     type: 2
     result: {fileID: 651354929322354794, guid: b412c9f807ea8f24386fc413dece57dc, type: 3}
+  cookSprite: {fileID: 21300000, guid: a8b8bad5a99a95d419ec2d87387f9c2c, type: 3}
+  partsSprites:
+  - {fileID: 21300000, guid: 21727baca4e80444db91090bbd7df004, type: 3}

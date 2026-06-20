@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * TimeManager.Instance.deltaTime);
         if (moveInput.sqrMagnitude > 0.01f)
         {
-            Quaternion target = Quaternion.LookRotation(moveInput, Vector3.up);
+            Quaternion target = Quaternion.LookRotation(-moveInput, Vector3.up);
             // transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * TimeManager.Instance.deltaTime);
 
