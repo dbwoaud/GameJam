@@ -31,14 +31,12 @@ public class Ingredient : Carryable
         if (IsChopped) 
             return;
 
-        chopCount++;
-        //UI 업데이트
+        chopCount++;  
 
-        if (IsChopped)
-        {
+        //UI 업데이트
+        
+        if (IsChopped) 
             OnChopCompleted();
-        }
-            
     }
 
     private void OnChopCompleted()
