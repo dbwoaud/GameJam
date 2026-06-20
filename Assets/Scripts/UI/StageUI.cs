@@ -21,7 +21,7 @@ public class StageUI : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
         var ui = UIManager.Instance.Show<StageInfoUI>();
         ui.Show(stageData);
 
-        ((RectTransform)ui.transform).position = ((RectTransform)transform).position;
+        ((RectTransform)ui.transform).position = ((RectTransform)transform).position + Vector3.up * 50;
         
     }
 
