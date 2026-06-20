@@ -49,6 +49,7 @@ public class InGameUI : BaseUI
     private void ReturnLobby()
     {
         SceneControl.Instance.LoadScene(SceneType.LobbyScene);
+        TimeManager.Instance.SetTimeScale(1);
     }
 
     public void OnClickTutorial()

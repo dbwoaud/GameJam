@@ -7,5 +7,6 @@ public class SequenceDataSO : ScriptableObject
     {
         var ui = UIManager.Instance.Show<TutorialUI>();
         ui.Show();
+        SceneControl.Instance.OnComplete -= StartSequence;
     }
 }

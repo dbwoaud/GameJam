@@ -39,8 +39,8 @@ public class Ghost : MonoBehaviour
 
     public void GetRandomFoodData()
     {
-        //data.orderFoodSO = StageManager.Instance.stageData.GetRandomFood();
-        data.orderFoodSO = temp;
+        data.orderFoodSO = StageManager.Instance.stageData.GetRandomFood();
+        // data.orderFoodSO = temp;
 
         var ui = UIManager.Instance.Show<InGameUI>();
         myOrder = ui.AddOrder(data.orderFoodSO);
@@ -48,7 +48,7 @@ public class Ghost : MonoBehaviour
 
     public void DestroyMyOrder()
     {
-        Destroy(myOrder);
+        Destroy(myOrder.gameObject);
     }
 
     #region CallUI ui �� ������ �������� ���� �����ϵ��� �ϰ���.

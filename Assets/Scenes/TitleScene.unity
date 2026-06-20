@@ -587,7 +587,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -986,7 +986,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3830596058687761219, guid: 77e5908508132ef4abf3e55ef734a3f1, type: 3}
       propertyPath: m_fontSize
-      value: 57.05
+      value: 53.35
       objectReference: {fileID: 0}
     - target: {fileID: 3830596058687761219, guid: 77e5908508132ef4abf3e55ef734a3f1, type: 3}
       propertyPath: m_fontColor.b
