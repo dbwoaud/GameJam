@@ -233,6 +233,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 32e9f4199b5a453418c9ebeb0f4f55bb, type: 2}
   - {fileID: 11400000, guid: 4eb9bda09b96f1f408d0f30f10d072a5, type: 2}
   - {fileID: 11400000, guid: f63fceba4dde49d4f861d7f1a9487a87, type: 2}
+  chopVFX: {fileID: 5743112849130093321, guid: aceb3c12189554440bde54531acbd4f3, type: 3}
 --- !u!65 &3947247287143548215
 BoxCollider:
   m_ObjectHideFlags: 0
