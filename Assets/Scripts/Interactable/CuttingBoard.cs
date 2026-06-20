@@ -7,7 +7,7 @@ public class CuttingBoard : MonoBehaviour, IInteractable
     [SerializeField] private Transform socket;
     [SerializeField] List<CookDataSO> slicableIngredients;
     List<int> slicableIngredientIndexes;
-
+    [SerializeField] private ParticleSystem chopVFX;
     private Ingredient onBoard;
 
     private void Start()
@@ -51,6 +51,12 @@ public class CuttingBoard : MonoBehaviour, IInteractable
         if (!slicableIngredientIndexes.Contains(onBoard.IngredientIndex)) return;
 
         SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Slice"));
+
+        // VFX 효과 추가
+        ParticleSystem ps = Instantiate(chopVFX, socket.transform.position, socket.transform.rotation);
+        ps.Play();
+        Destroy(ps, 1.5f);
+
         onBoard.Chop();
     }
 
