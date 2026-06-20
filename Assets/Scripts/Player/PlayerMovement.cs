@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("�̵� ����")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float runMultiplier = 2.0f;
+    [SerializeField] private ParticleSystem runVFX;
     [SerializeField] private float rotationSpeed = 15f;
     [SerializeField] private float gravity = -9.8f;
 
@@ -22,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private float verticalVelocity;
     private Dictionary<MoveInputAction, KeyCode> binds;
     private PlayerInput playerInput;
-   
+
 
     void Awake()
     {
@@ -58,7 +59,25 @@ public class PlayerMovement : MonoBehaviour
             // verticalVelocity += gravity * Time.deltaTime;
             verticalVelocity += gravity * TimeManager.Instance.deltaTime;
 
-        float speed = IsHeld(MoveInputAction.Run) ? moveSpeed * runMultiplier : moveSpeed;
+        float speed = moveSpeed;
+        bool isMoving = moveInput.sqrMagnitude > 0.01f;
+        bool isRunning = IsHeld(MoveInputAction.Run) && isMoving;
+
+        if (isRunning)
+        {
+            speed = moveSpeed * runMultiplier;
+            if (!runVFX.isPlaying)
+            {
+                runVFX.Play();
+            }
+        }
+        else
+        {
+            if (runVFX.isPlaying)
+            {
+                runVFX.Stop();
+            }
+        }
 
         Vector3 velocity = moveInput * speed;
         velocity.y = verticalVelocity;
