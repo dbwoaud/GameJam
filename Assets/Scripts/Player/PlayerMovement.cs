@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private Dictionary<MoveInputAction, KeyCode> binds;
     private PlayerInput playerInput;
 
+    [SerializeField] Animator animator;
 
     void Awake()
     {
@@ -79,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
+
         Vector3 velocity = moveInput * speed;
         velocity.y = verticalVelocity;
         // controller.Move(velocity * Time.deltaTime);
@@ -88,6 +90,12 @@ public class PlayerMovement : MonoBehaviour
             Quaternion target = Quaternion.LookRotation(moveInput, Vector3.up);
             // transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * TimeManager.Instance.deltaTime);
+
+            animator.SetBool("Move", true);
+        }
+        else
+        {
+            animator.SetBool("Move", false);
 
         }
     }

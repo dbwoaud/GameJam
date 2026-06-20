@@ -89,6 +89,7 @@ MonoBehaviour:
   runVFX: {fileID: 1796516069007127364}
   rotationSpeed: 15
   gravity: -9.8
+  animator: {fileID: 1564546189871078114}
 --- !u!114 &3181150777605945287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,10 +110,10 @@ MonoBehaviour:
   dropForward: 1
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
   carryableLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
 --- !u!136 &3308325605807537700
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -1147,14 +1147,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 3181150777605945287, guid: 977559db060290042a47a1b672af2ac4, type: 3}
-      propertyPath: carryableLayer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 3181150777605945287, guid: 977559db060290042a47a1b672af2ac4, type: 3}
-      propertyPath: interactableLayer.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
     - target: {fileID: 4175463179883021955, guid: 977559db060290042a47a1b672af2ac4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.343036
