@@ -21,18 +21,25 @@ public class PlayerInput : MonoBehaviour
     public Carryable HeldItem => heldItem;
     public bool IsHolding => heldItem != null;
 
+    [SerializeField] Animator animator;
+
     public void Hold(Carryable item)
     {
         if (item == null) 
             return;
         heldItem = item;
         item.PickUp(holdPoint);
+
+        animator.SetBool("Grap", true);
     }
 
     public Carryable TakeFromHands()
     {
         Carryable item = heldItem;
         heldItem = null;
+
+        animator.SetBool("Grap", false);
+
         return item;
     }
 
@@ -43,6 +50,8 @@ public class PlayerInput : MonoBehaviour
 
         heldItem.Drop(transform.position + transform.forward * dropForward);
         heldItem = null;
+
+        animator.SetBool("Grap", false);
     }
 
     void Awake()
@@ -169,6 +178,17 @@ public class PlayerInput : MonoBehaviour
             }
         }
         return nearest;
+    }
+
+
+    public void TriggerWash()
+    {
+        animator.SetTrigger("WashTrigger");
+    }
+
+    public void TriggerCut()
+    {
+        animator.SetTrigger("CutTrigger");
     }
 
     private void OnDrawGizmosSelected()
