@@ -6,6 +6,7 @@ public class BaseUI : MonoBehaviour
 
     public virtual void Hide()
     {
+        UIManager.Instance.PopStack();
         gameObject.SetActive(false);
     }
 }

@@ -7,7 +7,8 @@ public class UIManager : Singleton<UIManager>
 {
     private Canvas canvas;
 
-    private Dictionary<Type,BaseUI> uiDict= new Dictionary<Type, BaseUI>();
+    private Dictionary<Type,BaseUI> uiDict= new Dictionary<Type, BaseUI>(); 
+    private Stack<BaseUI> uiStack = new Stack<BaseUI>();
 
     void Start()
     {
@@ -18,6 +19,28 @@ public class UIManager : Singleton<UIManager>
     {
         uiDict.Clear();
         canvas = null;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(uiStack.Count > 0)
+            {
+                uiStack.Peek().Hide();
+            }
+            else
+            {
+                var ui = Show<InfoUI>();
+                ui.SetUI("게임을 종료하시겠습니까?", () => {
+                    #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+                    #else
+                        Application.Quit();
+                    #endif                    
+                });
+            }
+        }
     }
 
     public T Show<T>(string uiName = "") where T : BaseUI
@@ -43,6 +66,8 @@ public class UIManager : Singleton<UIManager>
         var result = uiDict[typeof(T)] as T;
         result.gameObject.SetActive(true);
 
+        uiStack.Push(result);
+
         return result;
     }
 
@@ -60,5 +85,10 @@ public class UIManager : Singleton<UIManager>
         scaler.referenceResolution = new Vector2(1920,1080);
 
         g.AddComponent<GraphicRaycaster>();
+    }
+
+    public void PopStack()
+    {
+        uiStack.Pop();
     }
 }
