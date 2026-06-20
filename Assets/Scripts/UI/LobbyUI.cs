@@ -3,9 +3,19 @@ using UnityEngine;
 
 public class LobbyUI : BaseUI
 {
+    void Start()
+    {
+        UIManager.Instance.Show<ControlInfoUI>();
+    }
+
     public void OnClickSetting()
     {
         UIManager.Instance.Show<SettingUI>();
+    }
+
+    public void OnClickCotronInfo()
+    {
+        UIManager.Instance.Show<ControlInfoUI>();
     }
 
     // public StageDataSO testData;

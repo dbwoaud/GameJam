@@ -1,12 +1,15 @@
 using UnityEngine;
 using TMPro;
-using Sirenix.OdinInspector.Editor.GettingStarted;
+using System.Collections.Generic;
 
 public class InGameUI : BaseUI
 {
     [SerializeField] private TMP_Text targetText;
     [SerializeField] private TMP_Text timerText;
 
+    [SerializeField] private Transform recipeTR;
+
+    private List<RecipeInfoUI> recipeUIList = new List<RecipeInfoUI>();
     void Start()
     {
         StageManager.Instance.OnUpdateCount += SetTargetText;
@@ -52,5 +55,19 @@ public class InGameUI : BaseUI
     {
         var ui = UIManager.Instance.Show<TutorialUI>();
         ui.Show();
+    }
+
+    public RecipeInfoUI AddOrder(CookDataSO dataSO)
+    {
+        var prefab = ResourceManager.Instance.Load<RecipeInfoUI>("RecipeInfoUI");
+        var ui = Instantiate(prefab,recipeTR);
+
+        // var ui = g.GetComponent<RecipeInfoUI>();
+
+        ui.Show(dataSO);
+
+        recipeUIList.Add(ui);
+
+        return ui;
     }
 }
