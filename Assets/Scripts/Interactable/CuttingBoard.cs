@@ -6,9 +6,8 @@ public class CuttingBoard : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform socket;
     [SerializeField] List<CookDataSO> slicableIngredients;
-    [SerializeField] ParticleSystem chopVFX;
     List<int> slicableIngredientIndexes;
-
+    [SerializeField] private ParticleSystem chopVFX;
     private Ingredient onBoard;
 
     private void Start()
@@ -51,10 +50,13 @@ public class CuttingBoard : MonoBehaviour, IInteractable
         //  이미 썰린 재료가 됐을 때 썰 수 없는 것일 가능성 높아서 return
         if (!slicableIngredientIndexes.Contains(onBoard.IngredientIndex)) return;
 
-        Debug.Log("인터렉트");
+        SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Slice"));
+
+        // VFX 효과 추가
         ParticleSystem ps = Instantiate(chopVFX, socket.transform.position, socket.transform.rotation);
         ps.Play();
-        Destroy(ps.gameObject, 1.5f);
+        Destroy(ps, 1.5f);
+
         onBoard.Chop();
     }
 

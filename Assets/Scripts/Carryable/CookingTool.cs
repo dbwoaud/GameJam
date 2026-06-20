@@ -22,6 +22,8 @@ public abstract class CookingTool : Carryable
     private readonly Stack<Ingredient> contents = new Stack<Ingredient>();
     private float timer;
 
+    AudioSource loopAudioSource;
+
     public CookState State { get; private set; } = CookState.Idle;
 
     //  재료와 조리도구가 일치할 때 레시피.
@@ -120,7 +122,17 @@ public abstract class CookingTool : Carryable
 
     private void StartCooking()
     {
-        SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Boiling"));
+        string clipName = "";
+        switch (Type)
+        {
+            case CookType.Boil:
+                clipName = "Boiling";
+                break;
+            case CookType.Fry:
+                clipName = "Fry";
+                break;
+        }
+        loopAudioSource = SoundManager.Instance.PlayLoopSFX(ResourceManager.Instance.Load<AudioClip>(clipName));
 
         State = CookState.Cooking;
         timer = 0f;
@@ -175,6 +187,9 @@ public abstract class CookingTool : Carryable
 
         if (plate.TryReceiveDish(resultObject))
         {
+            SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("PutIngredient"));
+
+            resultObject = null;
             ResetCookware();
             return true;
         }
@@ -196,6 +211,9 @@ public abstract class CookingTool : Carryable
 
     private void ResetCookware()
     {
+        loopAudioSource.Stop();
+        Destroy(loopAudioSource.gameObject);
+
         State = CookState.Idle;
         Destroy(resultObject);
         resultObject = null;

@@ -15,6 +15,7 @@ public class LeavingState : GhostState
         _ghost.ShowFace(_isSuccess);
         if (IsSuccess) 
         {
+            SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Holy"));
             _movement.ToHeaven(); 
             StageManager.Instance.CountingTarget();
         }
