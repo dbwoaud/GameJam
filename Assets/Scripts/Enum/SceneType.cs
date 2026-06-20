@@ -2,5 +2,8 @@ public enum SceneType
 {
     TitleScene,
     LobbyScene,
-    GameScene,
+    // GameScene,
+    Stage0,
+    Stage1,
+    Stage2,
 }

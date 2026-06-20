@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    [Header("Å° ¹ÙÀÎµù")]
+    [Header("Å° ï¿½ï¿½ï¿½Îµï¿½")]
     [SerializeField] private KeyCode grabKey = KeyCode.Z;
     [SerializeField] private KeyCode interactionKey = KeyCode.LeftControl;
 
-    [Header("Àâ±â ¼³Á¤")]
+    [Header("ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private Transform holdPoint;
     [SerializeField] private float grabRange = 1.2f;
     [SerializeField] private float facingThreshold = 0.3f;
@@ -17,10 +17,6 @@ public class PlayerInput : MonoBehaviour
 
     private Dictionary<InteractionInputAction, KeyCode> binds;
     private Carryable heldItem;
-
-    [SerializeField] PlayerVisualInteraction visualInteraction;
-    public PlayerVisualInteraction VisualInteraction => visualInteraction;
-
 
     public Carryable HeldItem => heldItem;
     public bool IsHolding => heldItem != null;

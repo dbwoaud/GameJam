@@ -3,6 +3,7 @@ using UnityEngine;
 public class StageUI : MonoBehaviour
 {
     [SerializeField] private StageDataSO stageData;
+    [SerializeField] private SceneType sceneType;
 
     public void OnClickGameScene()
     {
@@ -10,7 +11,8 @@ public class StageUI : MonoBehaviour
 
         SceneControl.Instance.OnComplete += OnComplete;
 
-        SceneControl.Instance.LoadSceneAsync((int)SceneType.GameScene);
+        // SceneControl.Instance.LoadSceneAsync((int)SceneType.GameScene);
+        SceneControl.Instance.LoadSceneAsync((int)sceneType);
     }
 
     private void OnComplete()

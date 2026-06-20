@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageUI
   stageData: {fileID: 11400000, guid: 9e523dc9c35e34845b0fed627d685624, type: 2}
+  sceneType: 3
 --- !u!114 &8979053427843052388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageUI
   stageData: {fileID: 11400000, guid: 1dab2b56412f5074f8633f974cafd0e2, type: 2}
+  sceneType: 2
 --- !u!114 &7738402797615560803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageUI
   stageData: {fileID: 11400000, guid: d4541828d09f37f41a94a42c8531ce34, type: 2}
+  sceneType: 4
 --- !u!114 &5249474861851236426
 MonoBehaviour:
   m_ObjectHideFlags: 0

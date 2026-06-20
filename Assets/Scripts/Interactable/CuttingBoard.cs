@@ -15,14 +15,14 @@ public class CuttingBoard : MonoBehaviour, IInteractable
         slicableIngredientIndexes = new();
         foreach (CookDataSO c in slicableIngredients)
         {
-            if (c.cookData.itemIndexs.Count > 1) { Debug.LogError("´ç½ÅÀº ½Ç¼ö¸¦ ÀúÁú·¶¾¹´Ï´Ù."); continue; }
+            if (c.cookData.itemIndexs.Count > 1) { Debug.LogError("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½."); continue; }
             slicableIngredientIndexes.Add(c.cookData.itemIndexs[0]);
         }
     }
 
     public void OnGrab(PlayerInput player)
     {
-        //  µç Àç·á µµ¸¶¿¡ ³õ±â
+        //  ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (onBoard == null && player.HeldItem is Ingredient ingredient)
         {
             if (!slicableIngredientIndexes.Contains(ingredient.IngredientIndex)) return;
@@ -34,7 +34,7 @@ public class CuttingBoard : MonoBehaviour, IInteractable
             return;
         }
 
-        //  µµ¸¶¿¡ ÀÖ´Â Àç·á µé±â
+        //  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (onBoard != null && !player.IsHolding)
         {
             onBoard.SetCuttingBoard(null);
@@ -47,17 +47,15 @@ public class CuttingBoard : MonoBehaviour, IInteractable
     {
         if (onBoard == null) return;
 
-        //  ÀÌ¹Ì ½ä¸° Àç·á°¡ µÆÀ» ¶§ ½ä ¼ö ¾ø´Â °ÍÀÏ °¡´É¼º ³ô¾Æ¼­ return
+        //  ï¿½Ì¹ï¿½ ï¿½ä¸° ï¿½ï¿½á°¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½É¼ï¿½ ï¿½ï¿½ï¿½Æ¼ï¿½ return
         if (!slicableIngredientIndexes.Contains(onBoard.IngredientIndex)) return;
 
         SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Slice"));
 
-        // VFX È¿°ú Ãß°¡
+        // VFX È¿ï¿½ï¿½ ï¿½ß°ï¿½
         ParticleSystem ps = Instantiate(chopVFX, socket.transform.position, socket.transform.rotation);
         ps.Play();
         Destroy(ps.gameObject, 1.5f);
-
-        player.VisualInteraction.ShowSlicing();
 
         onBoard.Chop();
     }
@@ -66,7 +64,7 @@ public class CuttingBoard : MonoBehaviour, IInteractable
     {
         foreach (CookDataSO c in slicableIngredients)
         {
-            if (c.cookData.itemIndexs.Count > 1) { Debug.LogError("´ç½ÅÀº ½Ç¼ö¸¦ ÀúÁú·¶¾¹´Ï´Ù."); continue; }
+            if (c.cookData.itemIndexs.Count > 1) { Debug.LogError("ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½."); continue; }
             if (c.cookData.itemIndexs[0] == onBoard.IngredientIndex)
             {
                 Destroy(socket.GetChild(0).gameObject);
