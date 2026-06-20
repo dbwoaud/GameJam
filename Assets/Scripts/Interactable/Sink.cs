@@ -16,7 +16,7 @@ public class Sink : MonoBehaviour, IInteractable
     {
         if (player.HeldItem is Plate held)
         {
-            if (held.Dish != DishType.None)
+            if (held.FoodGO != null)
                 return;
 
             player.TakeFromHands();

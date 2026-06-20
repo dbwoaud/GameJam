@@ -84,6 +84,7 @@ public class PlayerInput : MonoBehaviour
             Carryable front = FindFrontCarryable();
             if (heldItem is CookingTool tool && tool.IsDone && front is Plate target)
             {
+                Debug.Log("프라이팬을 든 채 접시에 음식을 놓음");
                 if (tool.TryServeTo(target))
                     return;
             }

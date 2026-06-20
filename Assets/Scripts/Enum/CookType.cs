@@ -27,21 +27,6 @@ public enum IngredientType
     SesamiOil
 }
 
-// 레시피 결과
-public enum DishType 
-{ 
-    None,
-    BeefSoup,
-    BraisedFish,
-    GreenOnionPancake,
-    PanFriedBatteredFish,
-    PanFriedDubu,
-    PanFriedMeatPatties,
-    PanFriedSkewers,
-    RiceCake,
-    SoyBraisedBeef
-}
-
 // 음식 상태
 public enum CookState
 { 

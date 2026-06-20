@@ -1,9 +1,15 @@
 using System.Collections.Generic;
+using System.Text;
 
 public class RecipeManager : Singleton<RecipeManager>
 {
     private bool isInit = false;
     private Dictionary<CookData,HashSet<int>> recipePool = new Dictionary<CookData, HashSet<int>>();
+
+    private void Start()
+    {
+        Init();
+    }
 
     public void Init()
     {
@@ -43,16 +49,12 @@ public class RecipeManager : Singleton<RecipeManager>
 
             if(hashSet.SetEquals(itemIndexs))
             {
-                if(data == null)
-                {
-                    data = recipe;
-                }
-                else
-                {
-                    return null;
-                }
+                return recipe;
+
             }
         }
+
+        Logger.Log("레시피가 없습니다.");
 
         return data;
     }

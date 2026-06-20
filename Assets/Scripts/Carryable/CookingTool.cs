@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public abstract class CookingTool : Carryable
@@ -13,11 +14,17 @@ public abstract class CookingTool : Carryable
     [SerializeField] private float doneTime = 10f;   
     [SerializeField] private float burnTime = 15f;
 
+    [Header("래퍼런스")]
+    [SerializeField] CookingToolUI ui;
+
     private readonly Stack<Ingredient> contents = new Stack<Ingredient>();
     private float timer;
 
     public CookState State { get; private set; } = CookState.Idle;
-    public DishType Result { get; private set; } = DishType.None;
+
+    //  재료와 조리도구가 일치할 때 레시피.
+    CookData recipe;
+    GameObject resultObject;
 
     public int IngredientCount => contents.Count;
     public bool IsDone => State == CookState.Done;
@@ -35,6 +42,9 @@ public abstract class CookingTool : Carryable
         Transform root = contentsRoot != null ? contentsRoot : transform;
         ingredient.AttachTo(root);
         ingredient.transform.localPosition = new Vector3(0f, stackHeight * (contents.Count - 1), 0f);
+
+        TryStart();
+
         return true;
     }
 
@@ -52,14 +62,17 @@ public abstract class CookingTool : Carryable
         switch (State)
         {
             case CookState.Idle: 
-                TryStart(); 
                 break;
-            case CookState.Cooking: 
+            case CookState.Cooking:
+                ui.ShowPatience(timer / burnTime);
+
                 timer += dt; 
                 if (timer >= doneTime) 
                     Complete(); 
                 break;
-            case CookState.Done: 
+            case CookState.Done:
+                ui.ShowPatience(timer / burnTime);
+
                 timer += dt; 
                 if (timer >= burnTime) 
                     Burn(); 
@@ -72,18 +85,40 @@ public abstract class CookingTool : Carryable
         if (contents.Count == 0) 
             return;
 
-        var types = new List<string>();
-        foreach (var i in contents) 
-            types.Add(i.IngredientName);
-
-        /* 레시피에 존재하면 요리 시작
-        if (RecipeBook.TryMatch(types, Method, out DishType dish))
+        List<int> itemIndexs = new();
+        foreach (Ingredient i in contents)
         {
-            Result = dish;
+            itemIndexs.Add(i.IngredientIndex);
+        }
+
+        StringBuilder sb = new();
+        foreach (Ingredient i in contents)
+        {
+            sb.AppendLine(i.IngredientIndex.ToString());
+        }
+
+        recipe = RecipeManager.Instance.GetRecipe(itemIndexs);
+
+        if (recipe == null)
+        {
+            return;
+        }
+
+        if (recipe.type != Type) 
+        { 
+            Debug.Log("요리 타입이 달라 시작되지 않습니다.");
+            recipe = null; 
+        }
+
+        if (recipe != null)
+        {
             State = CookState.Cooking;
             timer = 0f;
+
+            //  바 초록색으로 시작
+            ui.gameObject.SetActive(true);
+            ui.BarTurnGreen();
         }
-        */
     }
 
     private void Complete()
@@ -96,23 +131,35 @@ public abstract class CookingTool : Carryable
         }
         contents.Clear();
         // 완성 음식 표시 
+        resultObject = Instantiate(recipe.result, contentsRoot);
+
+        //  바 빨간색으로 변경
+        ui.BarTurnRed();
     }
 
     private void Burn()
     {
         State = CookState.Burnt;
-        Result = DishType.None;
         // 탄 음식 표시
+        Destroy(resultObject);
+        //resultObject = Instantiate(탄 오브젝트);
+
+        //  탔으면 바 없앰.
+        ui.gameObject.SetActive(false);
     }
 
     public bool TryServeTo(Plate plate)
     {
-        if (State != CookState.Done || Result == DishType.None) 
+        if (State != CookState.Done || recipe == null) 
             return false;
-        if (!plate.TryReceiveDish(Result)) 
-            return false;
-        ResetCookware();
-        return true;
+
+        if (!plate.TryReceiveDish(resultObject))
+        {
+            ResetCookware();
+            return true;
+        }
+
+        return false;
     }
 
 
@@ -130,7 +177,9 @@ public abstract class CookingTool : Carryable
     private void ResetCookware()
     {
         State = CookState.Idle;
-        Result = DishType.None;
+        resultObject = null;
+        recipe = null;
         timer = 0f;
+        ui.gameObject.SetActive(false);
     }
 }

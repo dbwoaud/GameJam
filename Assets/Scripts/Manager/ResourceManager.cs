@@ -8,15 +8,10 @@ public class ResourceManager : Singleton<ResourceManager>
     private Dictionary<string,string> assetBinding = new Dictionary<string, string>();
     private Dictionary<string,UnityEngine.Object> assetPool = new Dictionary<string, UnityEngine.Object>();
 
-#if UNITY_EDITOR
-
-    [ContextMenu("TestInit")]
-    public void InitTest()
+    private void Start()
     {
         Init();
     }
-
-#endif
 
     public void Init()
     {

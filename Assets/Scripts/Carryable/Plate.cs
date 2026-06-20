@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
@@ -14,28 +15,45 @@ public class Plate : Carryable
     [SerializeField] private float stackHeight = 0.05f;
     private readonly List<Plate> plateStack = new List<Plate>();
 
-    public DishType Dish { get; private set; } = DishType.None;
+    [Header("레퍼런스")]
+    [SerializeField] Transform socket;
+    [SerializeField] GameObject foodGO;
+    public GameObject FoodGO;
+
     public bool IsDirty { get; private set; }
-    public bool IsEmpty => Dish == DishType.None && !IsDirty;
+    //public bool IsEmpty => Dish == DishType.None && !IsDirty;
+    public bool IsEmpty => foodGO == null && !IsDirty;
 
     public int StackCount => plateStack.Count + 1;
     public bool HasStack => plateStack.Count > 0;
     public Plate TopPlate => plateStack.Count > 0 ? plateStack[plateStack.Count - 1] : this;
 
-    public bool TryReceiveDish(DishType dish)
+    //  CookingTool에서 참조
+    public bool TryReceiveDish(GameObject resultObject)
     {
-        if (IsDirty || Dish != DishType.None || dish == DishType.None || HasStack) 
+        if (IsDirty || resultObject == null || HasStack)
             return false;
-        Dish = dish;
-        // 접시에 담긴 음식 표시
+
+        foodGO = resultObject;
+        foodGO.transform.SetParent(socket);
+
         return true;
     }
 
-    public void ClearDish() => Dish = DishType.None;
+    public void ClearDish() 
+    {
+        Destroy(foodGO);
+        foodGO = null;
+    }
+
+    public void TryEat()
+    {
+        ClearDish();
+        MakeDirty();
+    }
 
     public void MakeDirty()
     {
-        Dish = DishType.None;
         IsDirty = true;
         if (cleanPlate != null)
             cleanPlate.SetActive(false);
@@ -57,7 +75,7 @@ public class Plate : Carryable
     {
         if (other == null || other == this) 
             return false;
-        if (Dish != DishType.None || other.Dish != DishType.None) 
+        if (foodGO != null || other.foodGO != null) 
             return false;
         if (plateStack.Contains(other)) 
             return false;
@@ -111,4 +129,5 @@ public class Plate : Carryable
         var col = GetComponent<Collider>();
         if (col != null) col.enabled = true;
     }
+
 }
