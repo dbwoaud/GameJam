@@ -20,7 +20,7 @@ public class LeavingState : GhostState
         else
         {
             //  실패시 뒤엎고, 밖으로 걸어나가기
-            _data.table.TableFlip(false);
+            _data.table.TableFlip(TableState.Reversed);
             _movement.Leave();
         }
 

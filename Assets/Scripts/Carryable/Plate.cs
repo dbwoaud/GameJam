@@ -1,7 +1,5 @@
-using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 
 public class Plate : Carryable
@@ -17,8 +15,8 @@ public class Plate : Carryable
 
     [Header("레퍼런스")]
     [SerializeField] Transform socket;
-    [SerializeField] GameObject foodGO;
-    public GameObject FoodGO;
+    GameObject foodGO;
+    public GameObject FoodGO => foodGO;
 
     public bool IsDirty { get; private set; }
     //public bool IsEmpty => Dish == DishType.None && !IsDirty;
@@ -36,6 +34,8 @@ public class Plate : Carryable
 
         foodGO = resultObject;
         foodGO.transform.SetParent(socket);
+        foodGO.transform.localPosition = Vector3.zero;
+        foodGO.transform.localRotation = Quaternion.identity;
 
         return true;
     }

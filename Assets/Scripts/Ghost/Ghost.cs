@@ -6,8 +6,11 @@ public class Ghost : MonoBehaviour
     [SerializeField] GhostUI ui;
     GhostStateMachine stateMachine;
     GhostData data;
+    public GhostData Data => data;
 
     public GhostStateMachine StateMachine => stateMachine;
+
+    [SerializeField] CookDataSO temp;
 
     private void Awake()
     {
@@ -25,7 +28,7 @@ public class Ghost : MonoBehaviour
         stateMachine.Update();
     }
 
-    public void SetTableInfo(Table1 table)
+    public void SetTableInfo(Table table)
     {
         data.table = table;
 
@@ -34,14 +37,15 @@ public class Ghost : MonoBehaviour
 
     public void GetRandomFoodData()
     {
-        data.orderingFood = TempFoodManager.Instance.GetRandomFood();
+        //data.orderFoodSO = StageManager.Instance.stageData.GetRandomFood();
+        data.orderFoodSO = temp;
     }
 
     #region CallUI ui 콜 경유가 많아지면 서로 참조하도록 하겠음.
 
     public void ShowFoodUI()
     {
-        ui.ShowFood(data.orderingFood);
+        ui.ShowFood(data.orderFoodSO.name);
     }
 
     public void ShowPatience(float fillAmount)

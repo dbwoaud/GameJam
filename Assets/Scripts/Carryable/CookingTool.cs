@@ -153,7 +153,7 @@ public abstract class CookingTool : Carryable
         if (State != CookState.Done || recipe == null) 
             return false;
 
-        if (!plate.TryReceiveDish(resultObject))
+        if (plate.TryReceiveDish(resultObject))
         {
             ResetCookware();
             return true;

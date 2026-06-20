@@ -18,7 +18,6 @@ public class GasStove : MonoBehaviour, IInteractable
         //  접시를 들고 있고, 스토브에 음식이 있을 때
         if (held is Plate plate && onStove != null && onStove.IsDone)
         {
-            Debug.Log("접시를 든 채 스토브의 음식을 꺼냄");
             onStove.TryServeTo(plate);
             return;
         }

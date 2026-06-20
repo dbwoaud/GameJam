@@ -10,4 +10,10 @@ public class StageDataSO : ScriptableObject
     {
         return targetCookList;
     }
+
+    public CookDataSO GetRandomFood()
+    {
+        int index = Random.Range(0, targetCookList.Count);
+        return targetCookList[index];
+    }
 }

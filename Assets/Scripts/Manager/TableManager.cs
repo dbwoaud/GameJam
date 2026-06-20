@@ -13,17 +13,17 @@ public class TableManager : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] List<Table1> tables;
+    [SerializeField] List<Table> tables;
 
     #region Public Methods
 
-    public Table1 GetTable()
+    public Table GetTable()
     {
-        List<Table1> availableTables = new();
-        foreach (Table1 t in tables)
+        List<Table> availableTables = new();
+        foreach (Table t in tables)
         {
             if (t.IsOccupied) continue;
-            if (!t.IsRightPosition) continue;
+            if (t.State != TableState.Ready) continue;
             availableTables.Add(t);
         }
 

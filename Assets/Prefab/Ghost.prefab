@@ -414,6 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Ghost
   movement: {fileID: 8342841472286094838}
   ui: {fileID: 4264991853728021084}
+  temp: {fileID: 11400000, guid: 1c106a4c0455c1544ba10faf4fac80c1, type: 2}
 --- !u!114 &8342841472286094838
 MonoBehaviour:
   m_ObjectHideFlags: 0
