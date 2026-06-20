@@ -113,13 +113,21 @@ public abstract class CookingTool : Carryable
 
         if (recipe != null)
         {
-            State = CookState.Cooking;
-            timer = 0f;
-
-            //  바 초록색으로 시작
-            ui.gameObject.SetActive(true);
-            ui.BarTurnGreen();
+            StartCooking();
         }
+    }
+
+    private void StartCooking()
+    {
+        SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Boiling"));
+
+        State = CookState.Cooking;
+        timer = 0f;
+
+        //  바 초록색으로 시작
+        ui.gameObject.SetActive(true);
+        ui.BarTurnGreen();
+
     }
 
     private void Complete()
