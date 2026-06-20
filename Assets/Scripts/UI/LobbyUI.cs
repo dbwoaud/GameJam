@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class LobbyUI : BaseUI
 {
+    public void OnClickSetting()
+    {
+        UIManager.Instance.Show<SettingUI>();
+    }
+
     // public StageDataSO testData;
 
     // public void OnClickGameScene()

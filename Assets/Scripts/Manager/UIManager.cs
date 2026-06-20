@@ -11,7 +11,13 @@ public class UIManager : Singleton<UIManager>
 
     void Start()
     {
-        SceneControl.Instance.OnComplete += () => uiDict.Clear();
+        SceneControl.Instance.OnComplete += ResetDict;
+    }
+
+    private void ResetDict()
+    {
+        uiDict.Clear();
+        canvas = null;
     }
 
     public T Show<T>(string uiName = "") where T : BaseUI
