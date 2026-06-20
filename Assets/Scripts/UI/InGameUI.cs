@@ -10,7 +10,7 @@ public class InGameUI : BaseUI
     [SerializeField] private Transform recipeTR;
 
     private List<RecipeInfoUI> recipeUIList = new List<RecipeInfoUI>();
-    void Start()
+    public override void Show()
     {
         StageManager.Instance.OnUpdateCount += SetTargetText;
         StageManager.Instance.OnTimer += SetTimerText;
