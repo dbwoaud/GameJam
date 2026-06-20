@@ -3,7 +3,7 @@ using UnityEngine;
 public class IngredientSpawner : MonoBehaviour, IInteractable
 {
     [SerializeField] private Ingredient ingredientPrefab;
-    [SerializeField] private Transform spawnPoint;
+    [SerializeField] Transform coverPivot;
 
     public void OnGrab(PlayerInput player)
     {
@@ -14,8 +14,7 @@ public class IngredientSpawner : MonoBehaviour, IInteractable
 
         SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("TakeIngredient"));
 
-        Vector3 pos = spawnPoint != null ? spawnPoint.position : transform.position;
-        Ingredient ingredient = Instantiate(ingredientPrefab, pos, Quaternion.identity);
+        Ingredient ingredient = Instantiate(ingredientPrefab, Vector3.zero, Quaternion.identity);
         player.Hold(ingredient);
     }
 
