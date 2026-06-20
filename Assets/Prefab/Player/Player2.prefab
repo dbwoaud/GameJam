@@ -112,6 +112,7 @@ MonoBehaviour:
   runVFX: {fileID: 2626725342072844949}
   rotationSpeed: 15
   gravity: -9.8
+  animator: {fileID: 675173001553917671}
 --- !u!114 &3286893226887876087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +137,7 @@ MonoBehaviour:
   carryableLayer:
     serializedVersion: 2
     m_Bits: 128
+  animator: {fileID: 675173001553917671}
 --- !u!95 &675173001553917671
 Animator:
   serializedVersion: 7
@@ -146,7 +148,7 @@ Animator:
   m_GameObject: {fileID: 5032686713001946473}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c093fd8d47b994e4da136e4d5292410d, type: 2}
+  m_Controller: {fileID: 22100000, guid: 33eccefd6a9f02c47a8fd69eda686b41, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -183,7 +185,7 @@ Transform:
   m_GameObject: {fileID: 7359259191005191442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 1.5, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
