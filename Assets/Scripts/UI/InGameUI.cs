@@ -29,4 +29,21 @@ public class InGameUI : BaseUI
     {
         targetText.text = $"{count} / {target}";
     }
+
+    public void OnClickGameStop()
+    {
+        var ui = UIManager.Instance.Show<InfoUI>();
+        ui.SetUI("로비로 돌아가시겠습니까?",ReturnLobby);
+    }
+
+    public void OnClickSetting()
+    {
+        TimeManager.Instance.SetTimeScale(0f);
+        UIManager.Instance.Show<SettingUI>();
+    }
+
+    private void ReturnLobby()
+    {
+        SceneControl.Instance.LoadScene(SceneType.LobbyScene);
+    }
 }

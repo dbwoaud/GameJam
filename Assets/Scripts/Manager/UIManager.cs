@@ -9,14 +9,17 @@ public class UIManager : Singleton<UIManager>
 
     private Dictionary<Type,BaseUI> uiDict= new Dictionary<Type, BaseUI>();
 
-    public BaseUI Show<T>(string uiName = "") where T : BaseUI
+    void Start()
+    {
+        SceneControl.Instance.OnComplete += () => uiDict.Clear();
+    }
+
+    public T Show<T>(string uiName = "") where T : BaseUI
     {
         if(canvas == null)
         {
             CraeteCanvas();
         }
-
-        T ui = null;
 
         if(string.IsNullOrEmpty(uiName))
         {
@@ -27,11 +30,14 @@ public class UIManager : Singleton<UIManager>
         {
             var asset = ResourceManager.Instance.Load<T>(uiName);
             
-            var prefab = Instantiate(asset,canvas.transform);
-            uiDict.Add(typeof(T),prefab);
+            var ui = Instantiate(asset,canvas.transform);
+            uiDict.Add(typeof(T),ui);
         }
 
-        return ui;
+        var result = uiDict[typeof(T)] as T;
+        result.gameObject.SetActive(true);
+
+        return result;
     }
 
     [ContextMenu("CraeteCanvas")]
