@@ -123,25 +123,21 @@ public abstract class CookingTool : Carryable
 
     private void StartCooking()
     {
-        string clipName = "";
-        switch (Type)
-        {
-            case CookType.Boil:
-                clipName = "Boiling";
-                break;
-            case CookType.Fry:
-                clipName = "Fry";
-                break;
-        }
-        loopAudioSource = SoundManager.Instance.PlayLoopSFX(ResourceManager.Instance.Load<AudioClip>(clipName));
+        PlayCookingsound();
 
         State = CookState.Cooking;
         timer = 0f;
 
         //  바 초록색으로 시작
-        ui.gameObject.SetActive(true);
+        UIOn();
         ui.BarTurnGreen();
+    }
 
+    public void ContinueCooking()
+    {
+        if (recipe == null) return;
+        UIOn();
+        PlayCookingsound();
     }
 
     private void Complete()
@@ -185,7 +181,7 @@ public abstract class CookingTool : Carryable
         resultObject = Instantiate(burntFood, contentsRoot);
 
         //  탔으면 바 없앰.
-        ui.gameObject.SetActive(false);
+        UIOff();
     }
 
     public bool TryServeTo(Plate plate)
@@ -226,7 +222,7 @@ public abstract class CookingTool : Carryable
         resultObject = null;
         recipe = null;
         timer = 0f;
-        ui.gameObject.SetActive(false);
+        UIOff();
     }
 
     public void StopCookingSound()
@@ -237,6 +233,30 @@ public abstract class CookingTool : Carryable
             Destroy(loopAudioSource.gameObject);
             loopAudioSource = null;
         }
+    }
 
+    public void PlayCookingsound()
+    {
+        string clipName = "";
+        switch (Type)
+        {
+            case CookType.Boil:
+                clipName = "Boiling";
+                break;
+            case CookType.Fry:
+                clipName = "Fry";
+                break;
+        }
+        loopAudioSource = SoundManager.Instance.PlayLoopSFX(ResourceManager.Instance.Load<AudioClip>(clipName));
+    }
+
+    public void UIOff()
+    {
+        ui.gameObject.SetActive(false);
+    }
+
+    public void UIOn()
+    {
+        ui.gameObject.SetActive(true);
     }
 }

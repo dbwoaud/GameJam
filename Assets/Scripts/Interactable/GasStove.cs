@@ -23,10 +23,11 @@ public class GasStove : MonoBehaviour, IInteractable
         }
 
         //  손에 든 조리도구를 스토브에 올려놓음
-        if (held is CookingTool && onStove == null)
+        if (held is CookingTool cookingTool && onStove == null)
         {
             onStove = (CookingTool)player.TakeFromHands();
             onStove.AttachTo(socket != null ? socket : transform);
+            cookingTool.ContinueCooking();
             return;
         }
 
