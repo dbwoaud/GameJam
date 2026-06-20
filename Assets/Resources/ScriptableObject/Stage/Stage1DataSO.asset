@@ -18,6 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4657573741e15b54cada562c353a3d6f, type: 2}
   - {fileID: 11400000, guid: c37ec8b198e75c646935ec575a1ff80c, type: 2}
   clip: {fileID: 8300000, guid: b42f99d8609d52d4eb6092a996f3bae6, type: 3}
-  <targetCount>k__BackingField: 10
+  <targetCount>k__BackingField: 6
   <limitTime>k__BackingField: 120
   <sequenceData>k__BackingField: {fileID: 0}
