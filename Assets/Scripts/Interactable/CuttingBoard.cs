@@ -55,7 +55,9 @@ public class CuttingBoard : MonoBehaviour, IInteractable
         // VFX 효과 추가
         ParticleSystem ps = Instantiate(chopVFX, socket.transform.position, socket.transform.rotation);
         ps.Play();
-        Destroy(ps, 1.5f);
+        Destroy(ps.gameObject, 1.5f);
+
+        player.VisualInteraction.ShowSlicing();
 
         onBoard.Chop();
     }

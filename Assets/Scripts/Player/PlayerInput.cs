@@ -18,6 +18,10 @@ public class PlayerInput : MonoBehaviour
     private Dictionary<InteractionInputAction, KeyCode> binds;
     private Carryable heldItem;
 
+    [SerializeField] PlayerVisualInteraction visualInteraction;
+    public PlayerVisualInteraction VisualInteraction => visualInteraction;
+
+
     public Carryable HeldItem => heldItem;
     public bool IsHolding => heldItem != null;
 

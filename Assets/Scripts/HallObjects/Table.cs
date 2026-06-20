@@ -73,6 +73,7 @@ public class Table : MonoBehaviour, IInteractable
         if (held is Plate plate)
         {
             if (assignedGhost == null) return;
+            if (!(assignedGhost.StateMachine.CurrentState is WaitingForFoodState)) return;
             if (onPlate != null) return;
             onPlate = plate;
 

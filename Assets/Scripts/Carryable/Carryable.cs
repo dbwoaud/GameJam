@@ -66,6 +66,9 @@ public abstract class Carryable : MonoBehaviour
         if (gameObject.TryGetComponent(out CookingTool c))
         {
             SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Metal"));
+
+            //  집었을 때 요리 소리 중단
+            c.StopCookingSound();
         }
 
         if (gameObject.TryGetComponent(out Ingredient i))
