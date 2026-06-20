@@ -372,6 +372,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TempFoodManager
   currentStage: 0
+--- !u!1 &327339626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4933975743743423076, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+  m_PrefabInstance: {fileID: 7507450331587422790}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &327339634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327339626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b00dfa16bd9b35b40b431ed75788b7a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVisualInteraction
+  knifePivot: {fileID: 1424079199}
+  sponge: {fileID: 0}
 --- !u!1 &379296983
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +914,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FryingPan
       objectReference: {fileID: 0}
+    - target: {fileID: 2381519041845312365, guid: c700e25aa2fde7247a8967d175ac361b, type: 3}
+      propertyPath: completionVFX
+      value: 
+      objectReference: {fileID: 5743112849130093321, guid: aceb3c12189554440bde54531acbd4f3, type: 3}
     - target: {fileID: 8944280261368187927, guid: c700e25aa2fde7247a8967d175ac361b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.4310584
@@ -1274,6 +1297,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1424079199 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6424066735150982660, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+  m_PrefabInstance: {fileID: 7507450331587422790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1459083717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,6 +2074,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 939047657097066462, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: visualInteraction
+      value: 
+      objectReference: {fileID: 327339634}
+    - target: {fileID: 995747125581458087, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 995747125581458087, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 995747125581458087, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 995747125581458087, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 995747125581458087, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8537
+      objectReference: {fileID: 0}
+    - target: {fileID: 995747125581458087, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.437
+      objectReference: {fileID: 0}
     - target: {fileID: 2743672512252415747, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15
@@ -2090,10 +2146,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
+    - target: {fileID: 6424066735150982660, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4933975743743423076, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 327339634}
   m_SourcePrefab: {fileID: 100100000, guid: 191e94931255f9c4caaf64bc311aaa6b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

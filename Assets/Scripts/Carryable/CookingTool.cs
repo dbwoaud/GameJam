@@ -29,6 +29,7 @@ public abstract class CookingTool : Carryable
     //  재료와 조리도구가 일치할 때 레시피.
     CookData recipe;
     GameObject resultObject;
+    public GameObject ResultObject => resultObject;
 
     public int IngredientCount => contents.Count;
     public bool IsDone => State == CookState.Done;
@@ -155,7 +156,7 @@ public abstract class CookingTool : Carryable
 
         ParticleSystem ps = Instantiate(completionVFX, transform.position + new Vector3(0f, stackHeight, 0f), transform.rotation);
         ps.Play();
-        Destroy(ps, 1.5f);
+        Destroy(ps.gameObject, 1.5f);
 
         resultObject = Instantiate(recipe.result, contentsRoot);
 
@@ -171,7 +172,14 @@ public abstract class CookingTool : Carryable
         ParticleSystem.MainModule mainModule = ps.main;
         mainModule.startColor = Color.black;
         ps.Play();
-        Destroy(ps, 1.5f);
+        Destroy(ps.gameObject, 1.5f);
+
+        if (loopAudioSource != null)
+        {
+            loopAudioSource.Stop();
+            Destroy(loopAudioSource.gameObject);
+            loopAudioSource = null;
+        }
 
         Destroy(resultObject);
         resultObject = Instantiate(burntFood, contentsRoot);
@@ -209,10 +217,9 @@ public abstract class CookingTool : Carryable
         ResetCookware();
     }
 
-    private void ResetCookware()
+    public void ResetCookware()
     {
-        loopAudioSource.Stop();
-        Destroy(loopAudioSource.gameObject);
+        StopCookingSound();
 
         State = CookState.Idle;
         Destroy(resultObject);
@@ -220,5 +227,16 @@ public abstract class CookingTool : Carryable
         recipe = null;
         timer = 0f;
         ui.gameObject.SetActive(false);
+    }
+
+    public void StopCookingSound()
+    {
+        if (loopAudioSource != null)
+        {
+            loopAudioSource.Stop();
+            Destroy(loopAudioSource.gameObject);
+            loopAudioSource = null;
+        }
+
     }
 }

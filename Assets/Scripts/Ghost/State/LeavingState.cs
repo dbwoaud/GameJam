@@ -21,6 +21,7 @@ public class LeavingState : GhostState
         }
         else
         {
+            SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Angry"));
             //  ���н� �ھ���, ������ �ɾ����
             _data.table.TableFlip(TableState.Reversed);
             _movement.Leave();
