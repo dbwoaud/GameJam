@@ -130,7 +130,7 @@ public class PlayerInput : MonoBehaviour
 
     private IInteractable FindFrontInteractable()
     {
-        Vector3 center = transform.position - transform.forward * 0.5f;
+        Vector3 center = transform.position - transform.forward * 0.8f;
         Collider[] hits = Physics.OverlapSphere(center, grabRange, interactableLayer);
 
         IInteractable best = null;
@@ -159,7 +159,7 @@ public class PlayerInput : MonoBehaviour
 
     private Carryable FindFrontCarryable()
     {
-        Vector3 center = transform.position - transform.forward * 0.5f;
+        Vector3 center = transform.position - transform.forward * 0.8f;
         Collider[] hits = Physics.OverlapSphere(center, grabRange, carryableLayer);
 
         Carryable nearest = null;
@@ -194,6 +194,6 @@ public class PlayerInput : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position - transform.forward * 0.5f, grabRange);
+        Gizmos.DrawWireSphere(transform.position - transform.forward * 0.8f, grabRange);
     }
 }
