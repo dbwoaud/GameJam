@@ -65,6 +65,7 @@ public class Sink : MonoBehaviour, IInteractable
 
         if (washCount >= washStepsRequired)
         {
+
             washing.Wash();
             washing = null;
             washCount = 0;
