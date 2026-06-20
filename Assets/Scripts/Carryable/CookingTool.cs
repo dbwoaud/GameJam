@@ -10,9 +10,10 @@ public abstract class CookingTool : Carryable
     [SerializeField] private Transform contentsRoot;
     [SerializeField] private float stackHeight = 0.2f;
 
-    [Header("조리 시간")]
+    [Header("조리")]
     [SerializeField] private float doneTime = 1f;   
     [SerializeField] private float burnTime = 15f;
+    [SerializeField] private ParticleSystem completionVFX;
 
     [Header("래퍼런스")]
     [SerializeField] GameObject burntFood;
@@ -139,7 +140,11 @@ public abstract class CookingTool : Carryable
                 Destroy(i.gameObject);
         }
         contents.Clear();
-        // 완성 음식 표시 
+
+        ParticleSystem ps = Instantiate(completionVFX, transform.position + new Vector3(0f, stackHeight, 0f), transform.rotation);
+        ps.Play();
+        Destroy(ps, 1.5f);
+
         resultObject = Instantiate(recipe.result, contentsRoot);
 
         //  바 빨간색으로 변경
@@ -149,7 +154,13 @@ public abstract class CookingTool : Carryable
     private void Burn()
     {
         State = CookState.Burnt;
-        // 탄 음식 표시
+
+        ParticleSystem ps = Instantiate(completionVFX, transform.position + new Vector3(0f, stackHeight, 0f), transform.rotation);
+        ParticleSystem.MainModule mainModule = ps.main;
+        mainModule.startColor = Color.black;
+        ps.Play();
+        Destroy(ps, 1.5f);
+
         Destroy(resultObject);
         resultObject = Instantiate(burntFood, contentsRoot);
 

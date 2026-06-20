@@ -6,6 +6,7 @@ public class CuttingBoard : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform socket;
     [SerializeField] List<CookDataSO> slicableIngredients;
+    [SerializeField] ParticleSystem chopVFX;
     List<int> slicableIngredientIndexes;
 
     private Ingredient onBoard;
@@ -51,7 +52,10 @@ public class CuttingBoard : MonoBehaviour, IInteractable
         if (!slicableIngredientIndexes.Contains(onBoard.IngredientIndex)) return;
 
         Debug.Log("인터렉트");
-            onBoard.Chop();
+        ParticleSystem ps = Instantiate(chopVFX, socket.transform.position, socket.transform.rotation);
+        ps.Play();
+        Destroy(ps.gameObject, 1.5f);
+        onBoard.Chop();
     }
 
     public void OnChopComplete()
