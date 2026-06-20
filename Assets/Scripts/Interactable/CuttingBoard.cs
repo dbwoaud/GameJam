@@ -51,7 +51,6 @@ public class CuttingBoard : MonoBehaviour, IInteractable
         if (!slicableIngredientIndexes.Contains(onBoard.IngredientIndex)) return;
 
         SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Slice"));
-        player.TriggerCut();
 
         // VFX ȿ�� �߰�
         ParticleSystem ps = Instantiate(chopVFX, socket.transform.position, socket.transform.rotation);
