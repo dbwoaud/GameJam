@@ -7,6 +7,8 @@ public class GhostMovement : MonoBehaviour
 
     public Sequence MoveTo(Vector3 destination)
     {
+        transform.LookAt(destination);
+
         Sequence s = DOTween.Sequence();
         s.Append(transform.DOMove(destination, moveDuration));
 

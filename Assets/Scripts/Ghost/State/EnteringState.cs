@@ -6,7 +6,13 @@ public class EnteringState : GhostState
     {
         Sequence s = _movement.MoveTo(_data.table.GhostWaitingPosition);
 
-        s.AppendCallback(() => _ghost.StateMachine.ChangeState(new WaitingForFoodState()));
+        s.AppendCallback(
+            () =>
+            {
+                _ghost.transform.LookAt(_data.table.transform);
+                _ghost.StateMachine.ChangeState(new WaitingForFoodState());
+            }
+            );
     }
 
     public override void Exit()
