@@ -2433,6 +2433,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1059263894296737813, guid: 76660a34a9b259944a26e0536ecdb159, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4707149933918784758, guid: 76660a34a9b259944a26e0536ecdb159, type: 3}
       propertyPath: m_Name
       value: GasStoveTable
