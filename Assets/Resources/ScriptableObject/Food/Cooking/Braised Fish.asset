@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CookDataSO
   itemIndex: 201
   cookData:
+    cookName: "\uC0DD\uC120\uCC1C"
     itemIndexs: 6500000066000000
     cookingTime: 0
     type: 2
