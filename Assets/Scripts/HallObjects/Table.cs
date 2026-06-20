@@ -55,12 +55,19 @@ public class Table : MonoBehaviour, IInteractable
     private void ThrowPlate()
     {
         Collider c = onPlate.GetComponent<Collider>();
-        c.enabled = false;
 
-        Vector3 endPoint = new Vector3(transform.position.x, 0, transform.position.z) + new Vector3(2 * Mathf.Cos(Time.time), 0, 2 * Mathf.Sin(Time.time));
+        Plate plateToThrow = onPlate;
+        onPlate = null;
+
+        plateToThrow.transform.SetParent(null);
+
+        c.enabled = false;
+        Debug.Log("콜라이더끔");
+
+        Vector3 endPoint = new Vector3(transform.position.x, 1f, transform.position.z) + new Vector3(2 * Mathf.Cos(Time.time), 0, 2 * Mathf.Sin(Time.time));
 
         Sequence s = DOTween.Sequence();
-        s.Append(onPlate.transform.DOJump(endPoint, jumpPower, 1, 1f));
+        s.Append(plateToThrow.transform.DOJump(endPoint, jumpPower, 1, 1f));
         s.AppendCallback(() => { c.enabled = true; });
     }
 
@@ -108,7 +115,6 @@ public class Table : MonoBehaviour, IInteractable
 
         if (!player.IsHolding && onPlate != null)
         {
-            Debug.Log("여기");
             player.Hold(onPlate);
             onPlate = null;
             return;

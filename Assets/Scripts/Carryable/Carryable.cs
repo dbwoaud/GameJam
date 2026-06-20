@@ -16,6 +16,7 @@ public abstract class Carryable : MonoBehaviour
 
     public virtual void PickUp(Transform holdPoint)
     {
+        Debug.Log("ÇÈ¾÷");
         PlayObjectSound();
 
         IsHeld = true;
