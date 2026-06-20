@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using Sirenix.OdinInspector.Editor.GettingStarted;
 
 public class InGameUI : BaseUI
 {
@@ -45,5 +46,11 @@ public class InGameUI : BaseUI
     private void ReturnLobby()
     {
         SceneControl.Instance.LoadScene(SceneType.LobbyScene);
+    }
+
+    public void OnClickTutorial()
+    {
+        var ui = UIManager.Instance.Show<TutorialUI>();
+        ui.Show();
     }
 }

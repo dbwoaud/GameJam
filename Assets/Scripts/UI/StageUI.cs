@@ -12,6 +12,11 @@ public class StageUI : MonoBehaviour,IPointerEnterHandler,IPointerExitHandler
 
         SceneControl.Instance.OnComplete += OnComplete;
 
+        if(stageData.sequenceData != null)
+        {
+            SceneControl.Instance.OnComplete += stageData.sequenceData.StartSequence;
+        }
+
         // SceneControl.Instance.LoadSceneAsync((int)SceneType.GameScene);
         SceneControl.Instance.LoadSceneAsync((int)sceneType);
     }

@@ -8,6 +8,8 @@ public class StageDataSO : ScriptableObject
     [field:SerializeField] public int targetCount {get; private set;} //성불시킬 혼 숫자
     [field:SerializeField] public float  limitTime {get; private set;} //시간제한
 
+    [field:SerializeField] public SequenceDataSO sequenceData {get; private set;}
+
     public List<CookDataSO> GetCookList()
     {
         return targetCookList;

@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18eee40a693b18a4a85c6a3c2405cc1a, type: 2}
   <targetCount>k__BackingField: 10
   <limitTime>k__BackingField: 120
+  <sequenceData>k__BackingField: {fileID: 11400000, guid: 192f69638dfae3b49ba6b8d47ee08bef, type: 2}
