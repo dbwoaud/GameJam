@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 402681646365434921}
   - component: {fileID: 3181150777605945287}
   - component: {fileID: 3308325605807537700}
+  - component: {fileID: 1564546189871078114}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -37,7 +38,6 @@ Transform:
   - {fileID: 8485448801584140240}
   - {fileID: 2816271360806323922}
   - {fileID: 8035524499617516073}
-  - {fileID: 7548377275242829698}
   - {fileID: 929776748767750432}
   - {fileID: 8210744354311730175}
   m_Father: {fileID: 0}
@@ -136,6 +136,28 @@ CapsuleCollider:
   m_Height: 4.8
   m_Direction: 1
   m_Center: {x: 0, y: 1.9066601, z: 0}
+--- !u!95 &1564546189871078114
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976039333852982285}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 686a01dfdb4ef104b95314b4308f70cc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3920010208300753735
 GameObject:
   m_ObjectHideFlags: 0
@@ -221,7 +243,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 08038d80a3e26e34fac436d6ce458580, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7548377275242829698}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08038d80a3e26e34fac436d6ce458580, type: 3}
 --- !u!4 &2816271360806323922 stripped
@@ -364,19 +389,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 4175463179883021955}
+    m_TransformParent: {fileID: 2816271360806323922}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.41
+      value: 0.413
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.614
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.592
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalRotation.w
@@ -384,15 +409,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -409,6 +434,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
       propertyPath: m_Name
       value: character.vox-4-player-knife
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2b69ecf7fca98a42bfdf44207e8d873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
