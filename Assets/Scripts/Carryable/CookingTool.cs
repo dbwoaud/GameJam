@@ -11,7 +11,7 @@ public abstract class CookingTool : Carryable
     [SerializeField] private float stackHeight = 0.2f;
 
     [Header("조리 시간")]
-    [SerializeField] private float doneTime = 10f;   
+    [SerializeField] private float doneTime = 1f;   
     [SerializeField] private float burnTime = 15f;
 
     [Header("래퍼런스")]
