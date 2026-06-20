@@ -27,7 +27,7 @@ public class UIManager : Singleton<UIManager>
         {
             var asset = ResourceManager.Instance.Load<T>(uiName);
             
-            var prefab = Instantiate(asset);
+            var prefab = Instantiate(asset,canvas.transform);
             uiDict.Add(typeof(T),prefab);
         }
 
@@ -39,7 +39,7 @@ public class UIManager : Singleton<UIManager>
     {
         var g = new GameObject("Canvas");
 
-        var canvas =  g.AddComponent<Canvas>();
+        canvas =  g.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 
         var scaler =  g.AddComponent<CanvasScaler>();

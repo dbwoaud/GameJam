@@ -4,6 +4,7 @@ using System.IO;
 
 public class ResourceMapper : Editor
 {
+    [InitializeOnEnterPlayMode]
     [MenuItem("Tools/ResourceMapping")]
     public static void Mapping()
     {
@@ -38,10 +39,12 @@ public class ResourceMapper : Editor
                 continue;
             }
 
-            var fileName = Path.GetFileNameWithoutExtension(f);
-            var filePath = f.Replace(Application.dataPath,"Assets").Replace("\\","/");
+            var file = Path.GetFileName(f);
 
-            ResourceData data = new ResourceData(fileName,filePath);
+            var fileName = Path.GetFileNameWithoutExtension(f);
+            var filePath = f.Replace(Application.dataPath,"Assets").Replace("\\","/").Replace(file,fileName).Replace("Assets/Resources/","");
+
+            ResourceData data = new ResourceData(fileName.ToLower(),filePath);
 
             wrapper.Add(data);
         }

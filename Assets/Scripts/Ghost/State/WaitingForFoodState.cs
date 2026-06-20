@@ -19,7 +19,8 @@ public class WaitingForFoodState : GhostState
 
     public override void Update()
     {
-        remainingPatience -= Time.deltaTime;
+        // remainingPatience -= Time.deltaTime;
+        remainingPatience -= TimeManager.Instance.deltaTime;
 
         float fillAmount = remainingPatience / patience;
 

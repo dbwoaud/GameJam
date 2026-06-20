@@ -21,7 +21,7 @@ public class LobbyUI : BaseUI
 
     private void OnComplete()
     {
-        StageManager.Instance.SetStageData(testData);
+        StageManager.Instance.SetStage(testData);
 
         SceneControl.Instance.OnComplete -= OnComplete;
     }

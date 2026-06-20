@@ -5,14 +5,37 @@ public class StageManager : Singleton<StageManager>
 {
     [field:SerializeField] public StageDataSO stageData { get; private set;}
 
+    private int targetCount = 0; //성불 수
+    private float playTime = 0f; //스테이지 플레이 시간
+
+    public Action<int,int> OnUpdateCount;
+    public Action<float,float> OnTimer;
+
+
     protected override void Awake()
     {
         isDestroyable = true;
         base.Awake();
     }
 
-    public void SetStageData(StageDataSO stageData)
+    public void SetStage(StageDataSO stageData)
     {
         this.stageData = stageData;
+        UIManager.Instance.Show<InGameUI>();
+    }
+
+    void Update()
+    {
+        if(TimeManager.Instance.timeScale >= 0f)
+        {
+            playTime += TimeManager.Instance.deltaTime;
+            OnTimer.Invoke(playTime,stageData.limitTime);
+        }
+    }
+
+    private void CountingTarget()
+    {
+        targetCount += 1;
+        OnUpdateCount?.Invoke(targetCount,stageData.targetCount);
     }
 }

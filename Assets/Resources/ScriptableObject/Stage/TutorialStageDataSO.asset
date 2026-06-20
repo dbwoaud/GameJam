@@ -15,3 +15,5 @@ MonoBehaviour:
   targetCookList:
   - {fileID: 11400000, guid: 1c106a4c0455c1544ba10faf4fac80c1, type: 2}
   - {fileID: 11400000, guid: 18eee40a693b18a4a85c6a3c2405cc1a, type: 2}
+  <targetCount>k__BackingField: 15
+  <limitTime>k__BackingField: 60

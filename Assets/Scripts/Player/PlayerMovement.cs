@@ -5,14 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Å° ¹ÙÀÎµù")]
+    [Header("Å° ï¿½ï¿½ï¿½Îµï¿½")]
     [SerializeField] private KeyCode upKey = KeyCode.W;
     [SerializeField] private KeyCode downKey = KeyCode.S;
     [SerializeField] private KeyCode leftKey = KeyCode.A;
     [SerializeField] private KeyCode rightKey = KeyCode.D;
     [SerializeField] private KeyCode runKey = KeyCode.LeftShift;
 
-    [Header("ÀÌµ¿ ¼³Á¤")]
+    [Header("ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float runMultiplier = 2.0f;
     [SerializeField] private float rotationSpeed = 15f;
@@ -55,17 +55,21 @@ public class PlayerMovement : MonoBehaviour
         if (controller.isGrounded && verticalVelocity < 0f)
             verticalVelocity = -2f;
         else
-            verticalVelocity += gravity * Time.deltaTime;
+            // verticalVelocity += gravity * Time.deltaTime;
+            verticalVelocity += gravity * TimeManager.Instance.deltaTime;
 
         float speed = IsHeld(MoveInputAction.Run) ? moveSpeed * runMultiplier : moveSpeed;
 
         Vector3 velocity = moveInput * speed;
         velocity.y = verticalVelocity;
-        controller.Move(velocity * Time.deltaTime);
+        // controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * TimeManager.Instance.deltaTime);
         if (moveInput.sqrMagnitude > 0.01f)
         {
             Quaternion target = Quaternion.LookRotation(moveInput, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            // transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, target, rotationSpeed * TimeManager.Instance.deltaTime);
+
         }
     }
 }
