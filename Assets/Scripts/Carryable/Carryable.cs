@@ -16,6 +16,8 @@ public abstract class Carryable : MonoBehaviour
 
     public virtual void PickUp(Transform holdPoint)
     {
+        PlayObjectSound();
+
         IsHeld = true;
         if (rb != null) 
             rb.isKinematic = true;
@@ -29,6 +31,8 @@ public abstract class Carryable : MonoBehaviour
 
     public virtual void Drop(Vector3 position)
     {
+        PlayObjectSound();
+
         IsHeld = false;
         transform.SetParent(null);
         transform.position = position;
@@ -44,6 +48,8 @@ public abstract class Carryable : MonoBehaviour
 
     public virtual void AttachTo(Transform socket)
     {
+        PlayObjectSound();
+
         IsHeld = false;
         if (rb != null) 
             rb.isKinematic = true;
@@ -53,5 +59,24 @@ public abstract class Carryable : MonoBehaviour
         transform.SetParent(socket);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+    }
+
+    private void PlayObjectSound()
+    {
+        if (gameObject.TryGetComponent(out CookingTool c))
+        {
+            SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Metal"));
+        }
+
+        if (gameObject.TryGetComponent(out Ingredient i))
+        {
+            SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("PutIngredient"));
+        }
+
+        if (gameObject.TryGetComponent(out Plate p))
+        {
+            SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("Plate"));
+        }
+
     }
 }

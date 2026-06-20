@@ -12,6 +12,8 @@ public class IngredientSpawner : MonoBehaviour, IInteractable
         if (ingredientPrefab == null) 
             return;
 
+        SoundManager.Instance.PlayOneShot(ResourceManager.Instance.Load<AudioClip>("TakeIngredient"));
+
         Vector3 pos = spawnPoint != null ? spawnPoint.position : transform.position;
         Ingredient ingredient = Instantiate(ingredientPrefab, pos, Quaternion.identity);
         player.Hold(ingredient);

@@ -25,4 +25,19 @@ public class SoundManager : Singleton<SoundManager>
         audioSources[index].clip = clip;
         audioSources[index].Play();
     }
+
+    public AudioSource PlayLoopSFX(AudioClip clip)
+    {
+        var g = new GameObject("LoopAudioSource");
+        g.transform.SetParent(transform);
+        AudioSource audioSource = g.AddComponent<AudioSource>();
+
+        audioSource.Stop();
+
+        audioSource.loop = true;
+        audioSource.clip = clip;
+        audioSource.Play();
+
+        return audioSource;
+    }
 }
