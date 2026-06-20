@@ -30,7 +30,8 @@ public class Ingredient : Carryable
     {
         if (IsChopped) 
             return;
-        chopCount++;
+
+        chopCount++;  
 
         //UI 업데이트
         

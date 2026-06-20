@@ -9,4 +9,10 @@ public class SettingUI : BaseUI
     {
         SoundManager.Instance.ChangeVoulme(SoundType.SFX,value);
     }
+
+    public override void Hide()
+    {
+        base.Hide();
+        TimeManager.Instance.SetTimeScale(1f);
+    }
 }
