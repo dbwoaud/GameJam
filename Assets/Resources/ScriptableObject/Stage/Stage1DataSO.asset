@@ -17,5 +17,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2983b9d698381d941a6d1af91588b0a0, type: 2}
   - {fileID: 11400000, guid: 4657573741e15b54cada562c353a3d6f, type: 2}
   - {fileID: 11400000, guid: c37ec8b198e75c646935ec575a1ff80c, type: 2}
-  <targetCount>k__BackingField: 15
-  <limitTime>k__BackingField: 60
+  <targetCount>k__BackingField: 10
+  <limitTime>k__BackingField: 120
