@@ -274,7 +274,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 100, y: 10}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &590150705178215893
 CanvasRenderer:
@@ -380,7 +380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 100, y: 10}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8383612572056131948
 CanvasRenderer:
@@ -457,7 +457,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 100, y: 10}
+  m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3446081834657155720
 CanvasRenderer:
@@ -676,8 +676,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pot
   contentsRoot: {fileID: 7050008719579968323}
   stackHeight: 0.2
-  doneTime: 1
-  burnTime: 15
+  doneTime: 7
+  burnTime: 20
   completionVFX: {fileID: 5743112849130093321, guid: aceb3c12189554440bde54531acbd4f3, type: 3}
   burntFood: {fileID: 651354929322354794, guid: 59b0c37b233f67b419283e008bff4a27, type: 3}
   ui: {fileID: 390305016282282836}

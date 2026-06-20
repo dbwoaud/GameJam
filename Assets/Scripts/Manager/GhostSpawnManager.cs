@@ -19,6 +19,19 @@ public class GhostSpawnManager : MonoBehaviour
     //  이거 List로 하지 말고 그냥 특정 범위안에서 랜덤으로 해도 될 듯?? 일단 냅두자.
     [SerializeField] List<Transform> ghostSpawnPositions;
 
+    float spawnInterval = 8f;
+    float spawnTimer;
+
+    private void Update()
+    {
+        spawnTimer += TimeManager.Instance.deltaTime;
+        if (spawnTimer > spawnInterval)
+        {
+            SpawnGhost();
+            spawnTimer = 0f;
+        }
+    }
+
     [Button]
     public void SpawnGhost()
     {
