@@ -33,7 +33,7 @@ public class StageManager : Singleton<StageManager>
         }
     }
 
-    private void CountingTarget()
+    public void CountingTarget()
     {
         targetCount += 1;
         OnUpdateCount?.Invoke(targetCount,stageData.targetCount);

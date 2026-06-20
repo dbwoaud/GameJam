@@ -16,10 +16,11 @@ public class LeavingState : GhostState
         if (IsSuccess) 
         {
             _movement.ToHeaven(); 
+            StageManager.Instance.CountingTarget();
         }
         else
         {
-            //  ½ÇÆÐ½Ã µÚ¾þ°í, ¹ÛÀ¸·Î °É¾î³ª°¡±â
+            //  ï¿½ï¿½ï¿½Ð½ï¿½ ï¿½Ú¾ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É¾î³ªï¿½ï¿½ï¿½ï¿½
             _data.table.TableFlip(TableState.Reversed);
             _movement.Leave();
         }
