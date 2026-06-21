@@ -97,15 +97,25 @@ public class PlayerInput : MonoBehaviour
                     return;
             }
 
-            if (heldItem is Plate plate && front is CookingTool placedTool)
+            //  조리도구를 들고, 앞에 놓인게 재료일 때 조리도구 안에 넣기
+            if (heldItem is CookingTool tool2 && tool2.State == CookState.Idle && front is Ingredient i)
             {
-                if (placedTool.IsDone && placedTool.TryServeTo(plate))
+                if (tool2.TryPush(i))
                     return;
             }
 
-            if (heldItem is Plate heldPlate && front is Plate other)
+            if (heldItem is Ingredient heldIngredient && front is CookingTool tool3 && tool3.State == CookState.Idle)
             {
-                if (heldPlate.TryStack(other))
+                if (tool3.TryPush(heldIngredient))
+                {
+                    TakeFromHands();
+                    return;
+                }
+            }
+
+            if (heldItem is Plate plate && front is CookingTool placedTool)
+            {
+                if (placedTool.IsDone && placedTool.TryServeTo(plate))
                     return;
             }
 

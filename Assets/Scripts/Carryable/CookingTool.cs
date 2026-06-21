@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 
 public abstract class CookingTool : Carryable
@@ -48,25 +47,16 @@ public abstract class CookingTool : Carryable
         ingredient.AttachTo(root);
         ingredient.transform.localPosition = new Vector3(0f, stackHeight * (contents.Count - 1), 0f);
 
-        TryStart();
-
         return true;
     }
 
-   
-    public Ingredient TryPopTop()
-    {
-        if (State != CookState.Idle || contents.Count == 0) 
-            return null;
-
-        return contents.Pop();
-    }
 
     public void TickCooking(float dt)
     {
         switch (State)
         {
-            case CookState.Idle: 
+            case CookState.Idle:
+                TryStart();
                 break;
             case CookState.Cooking:
                 ui.ShowPatience(timer / burnTime);
@@ -94,12 +84,6 @@ public abstract class CookingTool : Carryable
         foreach (Ingredient i in contents)
         {
             itemIndexs.Add(i.IngredientIndex);
-        }
-
-        StringBuilder sb = new();
-        foreach (Ingredient i in contents)
-        {
-            sb.AppendLine(i.IngredientIndex.ToString());
         }
 
         recipe = RecipeManager.Instance.GetRecipe(itemIndexs);

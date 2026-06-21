@@ -26,10 +26,6 @@ public class Sink : MonoBehaviour, IInteractable
                 plates = held;
                 held.AttachTo(socket != null ? socket : transform);
             }
-            else
-            {
-                plates.TryStack(held);
-            }
             return;
         }
 
