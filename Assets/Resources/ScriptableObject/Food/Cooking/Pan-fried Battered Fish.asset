@@ -21,5 +21,5 @@ MonoBehaviour:
     result: {fileID: 651354929322354794, guid: f7243c8e45c7a214c81db066347112d7, type: 3}
   cookSprite: {fileID: 21300000, guid: 76ee3fd30e5abdc4f8bccda808b1ad91, type: 3}
   partsSprites:
-  - {fileID: 21300000, guid: a7cd1e1fe892f5b49a8fdb6850ba0aae, type: 3}
-  - {fileID: 21300000, guid: 21727baca4e80444db91090bbd7df004, type: 3}
+  - {fileID: 21300000, guid: b4c6500796284e148988a4dcb89f9f90, type: 3}
+  - {fileID: 21300000, guid: 3b14bc6f8fba337439b87eecd76a5bc0, type: 3}
