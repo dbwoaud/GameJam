@@ -116,8 +116,12 @@ public class PlayerInput : MonoBehaviour
         else
         {
             Carryable item = FindFrontCarryable();
-            if (item != null) 
+            if (item != null)
+            {
+                Debug.Log("잡았다");
                 Hold(item);
+            }
+               
         }
     }
 
