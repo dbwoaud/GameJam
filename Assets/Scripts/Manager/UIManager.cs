@@ -18,6 +18,7 @@ public class UIManager : Singleton<UIManager>
     private void ResetDict()
     {
         uiDict.Clear();
+        uiStack.Clear();
         canvas = null;
     }
 

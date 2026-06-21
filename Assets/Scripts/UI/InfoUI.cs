@@ -23,6 +23,11 @@ public class InfoUI : BaseUI
     public void OnClickNo()
     {
         Hide();
-        TimeManager.Instance.SetTimeScale(1f);
+    }
+
+    public override void Hide()
+    {
+        base.Hide();
+        TimeManager.Instance.SetTimeScale(1);
     }
 }

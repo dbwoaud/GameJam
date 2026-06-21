@@ -48,7 +48,7 @@ public class InGameUI : BaseUI
 
     private void ReturnLobby()
     {
-        SceneControl.Instance.LoadScene(SceneType.LobbyScene);
+        SceneControl.Instance.LoadSceneAsync((int)SceneType.LobbyScene);
         TimeManager.Instance.SetTimeScale(1);
     }
 

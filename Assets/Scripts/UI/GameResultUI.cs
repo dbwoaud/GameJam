@@ -15,6 +15,6 @@ public class GameResultUI : BaseUI
     public void ReturnLobby()
     {
         TimeManager.Instance.SetTimeScale(1);
-        SceneControl.Instance.LoadScene(SceneType.LobbyScene);
+        SceneControl.Instance.LoadSceneAsync((int)SceneType.LobbyScene);
     }
 }
