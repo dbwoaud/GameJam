@@ -61,7 +61,6 @@ public class Plate : Carryable
             dirtyPlate.SetActive(true);
     }
 
-
     public void Wash()
     {
         IsDirty = false;

@@ -62,7 +62,6 @@ public class Table : MonoBehaviour, IInteractable
         plateToThrow.transform.SetParent(null);
 
         c.enabled = false;
-        Debug.Log("콜라이더끔");
 
         Vector3 endPoint = new Vector3(transform.position.x, 1f, transform.position.z) + new Vector3(2 * Mathf.Cos(Time.time), 0, 2 * Mathf.Sin(Time.time));
 
